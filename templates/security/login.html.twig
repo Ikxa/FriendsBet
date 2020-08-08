@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Connexion' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('global') }}
+    {{ encore_entry_link_tags('login') }}
+{% endblock %}
+
+{% block body %}
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-lg-6 login-section-wrapper">
+                    {# <div class="brand-wrapper"> #}
+                    {# <img src="{{ asset('images/logo.svg') }}" alt="logo" class="logo"> #}
+                    {# </div> #}
+                    <div class="login-wrapper my-auto">
+                        <h1 class="login-title">Se connecter</h1>
+                        <form action="{{ path('security.login') }}" method="post">
+                            <div class="form-group">
+                                <label for="username">Nom d'utilisateur</label>
+                                <input type="text" name="_username" id="username" class="form-control" placeholder="John Doe">
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="password">Mot de passe</label>
+                                <input type="password" name="_password" id="password" class="form-control" placeholder="Entez un mot de passe">
+                            </div>
+                            <input name="login" id="login" class="btn btn-block login-btn" type="submit" value="Connexion">
+                        </form>
+                        <p class="login-wrapper-footer-text">Pas inscrit ? <a href="{{ path('security.signup') }}" class="text-reset">Clique ici !</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-6 px-0 d-none d-md-none d-lg-block">
+                    <img src="{{ asset('images/login.jpg') }}" alt="login image" class="login-img">
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les matchs de la semaine{% endblock %}
+
+{% trans_default_domain 'messages' %}
+
+{% block body_class %}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid mt-3">
+        <div class="row">
+            {% for match in content["matches"] %}
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        {#<img class="card-img-top" src="..." alt="Card image cap">#}
+                        <div class="card-body">
+                            <div>
+                                <h4 class="card-title text-center">{{ match["homeTeam"]["name"] }} - {{ match["awayTeam"]["name"] }}</h4>
+                                <h5 class="card-title text-center">{{ match["score"]["fullTime"]["homeTeam"] ?? 0 }} - {{ match["score"]["fullTime"]["awayTeam"] ?? 0}}</h5>
+                            </div>
+                            <p class="card-text">{{ match["utcDate"]|date('d/m/Y') }} : Journée 38</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-secondary float-right">Parier</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

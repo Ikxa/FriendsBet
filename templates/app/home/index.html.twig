@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FriendsBets - Pariez sur vos matchs préférés entre amis !{% endblock %}
+
+{% trans_default_domain 'messages' %}
+
+{% block body %}
+    {{ include('app/home/_navbar.html.twig') }}
+
+    <header class="masthead text-white text-center">
+        <div class="container d-flex align-items-center justify-content-around">
+            <div class="text-left">
+                <p class="">{{ 'hello.message'|trans({'%name%': user}) }}</p>
+                <h1 class="">Pariez sur vos matchs favoris, entre amis !</h1>
+                <p class="">Créer un match et envoyer le lien à vos amis pour recevoir leurs paris.</p>
+            </div>
+            <div class="d-none d-sm-none d-md-block">
+                <img class="img-fluid" src="{{ asset('images/ballon.png') }}">
+            </div>
+        </div>
+    </header>
+
+    <div class="container container-marged">
+        <div class="row d-flex justify-content-around align-items-center">
+            <div class="col">
+                <p>Commencer à parier dès maintenant sur vos matchs préférés !</p>
+                <p>Allez voir les matchs de la semaine, lâchez vos meilleurs résultats et vous recevrez un mail récapitulatif quand le match sera terminé.</p>
+            </div>
+            <div class="col">
+                <img class="img-fluid" src="{{ asset('images/bet.png') }}">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

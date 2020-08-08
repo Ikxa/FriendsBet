@@ -1,0 +1,6 @@
+form:
+    username: Nom d'utilisateur
+    email: Adresse email
+    password: Mot de passe
+    phone: Numéro de téléphone
+    submit: Inscription
