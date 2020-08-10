@@ -7,7 +7,7 @@
 {% block body %}
     {{ include('app/home/_navbar.html.twig') }}
 
-    <header class="masthead text-white text-center">
+    <header class="masthead text-black text-center">
         <div class="container d-flex align-items-center justify-content-around">
             <div class="text-left">
                 <p class="">{{ 'hello.message'|trans({'%name%': user}) }}</p>
@@ -31,5 +31,29 @@
             </div>
         </div>
     </div>
+<style>
+.hauteur_logo {
+    height: 100px;
+    witdh: 100px;
+}
+</style>
+<header class="masthead text-black text-center">
+    <div class="container container-marged">
+        <div class="test">
+        </div>
+    <div id="present" style="height: 467.678px;">
+        <div class="cell">
+            <h1>
+                        CECI EST UN TEST
+            </h1>
+            <h2>
+                        Et ceci un autre
+            </h2>
+
+            <div class="competitions">
+                <a href="#">
+                    <img src="{{ asset('images/ligue2.png') }}" class="hauteur_logo">
+                <a href="#">
+                    <img src="{{ asset('images/champligue.png') }}" class="hauteur_logo">
 
 {% endblock %}
