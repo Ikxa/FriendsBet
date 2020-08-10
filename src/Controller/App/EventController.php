@@ -75,12 +75,12 @@ class EventController extends AbstractController
             $entityManager->flush();
         }
     
+        $teams = array_merge($content['match']['homeTeam'], $content['match']['awayTeam']);
         $bet = new Bet();
         $form = $this->createForm(BetType::class, $bet);
         
         if ($form->isSubmitted() && $form->isValid())
         {
-            dd('ici');
             $bet->setBetAt(new \DateTime());
             $bet->setRencontre($existingMatch ?? $match);
             $bet->addUser($this->getUser());

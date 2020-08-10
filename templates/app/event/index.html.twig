@@ -16,7 +16,6 @@
             {% for match in content["matches"] %}
                 <div class="col-md-6">
                     <div class="card mb-3">
-                        {#<img class="card-img-top" src="..." alt="Card image cap">#}
                         <div class="card-body">
                             <div>
                                 <h4 class="card-title text-center">{{ match["homeTeam"]["name"] }} - {{ match["awayTeam"]["name"] }}</h4>
@@ -28,7 +27,7 @@
                             padding-bottom: 45px;
                             padding-top: 16px;
                             ">
-                            <button class="btn btn-secondary float-right">Parier</button>
+                            <a href="{{ path('event.bet', {'id': match["id"]}) }}" class="btn btn-secondary betButton">Parier</a>
                         </div>
                     </div>
                 </div>
