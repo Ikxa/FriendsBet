@@ -14,12 +14,12 @@ body {
   }
 
   a {
-    @extend li;
     font-size: 20px;
     position: relative;
     text-transform: uppercase;
     text-decoration: none;
     padding-bottom: 8px;
+    color: $mainColor;
 
     &:before,
     &:after {
@@ -74,7 +74,7 @@ body {
   margin-top: 50px;
 }
 
-.masthead {
+.container-colored {
   background-color: $mainColor;
   padding: 50px 0 100px 0;
 }
@@ -161,4 +161,15 @@ body {
   padding: 10px;
   font-weight: 600;
   text-transform: uppercase
+}
+
+.hauteur_logo {
+  height: 100px;
+  witdh: 100px;
+}
+
+.competition-item {
+  border: 2px solid lightgrey;
+  border-radius: 5px;
+  padding: 10px;
 }
