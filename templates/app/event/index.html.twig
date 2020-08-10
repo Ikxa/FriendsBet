@@ -2,12 +2,15 @@
 
 {% block title %}Les matchs de la semaine{% endblock %}
 
+
 {% trans_default_domain 'messages' %}
 
 {% block body_class %}
 {% endblock %}
 
 {% block body %}
+{{ include('app/home/_navbar.html.twig') }}
+{{ include('app/event/navmatch.html.twig') }}
     <div class="container-fluid mt-3">
         <div class="row">
             {% for match in content["matches"] %}
@@ -21,7 +24,10 @@
                             </div>
                             <p class="card-text">{{ match["utcDate"]|date('d/m/Y') }} : Journée 38</p>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer" style="
+                            padding-bottom: 45px;
+                            padding-top: 16px;
+                            ">
                             <button class="btn btn-secondary float-right">Parier</button>
                         </div>
                     </div>
