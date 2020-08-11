@@ -1,0 +1,35 @@
+.parallax {
+  nav {
+    background-color: transparent !important;
+
+    li, a {
+      color: white;
+    }
+  }
+
+  .container-parallax {
+    min-height: 850px;
+    background-image: url("../../../public/images/parallax.jpg");
+    background-color: rgba(255, 255, 255, 0.7);
+    background-blend-mode: lighten;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    h1 {
+      padding: 150px 0 0 0;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+    }
+
+    h2 {
+      padding-bottom: 130px;
+    }
+  }
+
+  .img-league {
+    width: auto;
+    height: 120px;
+  }
+}

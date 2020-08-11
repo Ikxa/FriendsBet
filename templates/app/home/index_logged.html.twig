@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FriendsBets - Pariez sur vos matchs préférés entre amis !{% endblock %}
+
+{% trans_default_domain 'messages' %}
+
+{% block body_class %}
+    class="parallax"
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="container-fluid container-parallax">
+        {{ include('app/home/_navbar.html.twig') }}
+        <div class="row text-center row-parallax">
+            <h1>Bonjour {% if user is defined %} {{ user.username }} {% endif %}</h1>
+            <h2>Prêt à parier ?</h2>
+            <div class="leagues d-flex justify-content-between flex-wrap">
+                {% for image in images %}
+                    <a href=""><img src="{{ asset('images/league/' ~ image) }}" alt="{{ image }}" class="img-fluid img-league" /></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium asperiores aut beatae cupiditate, distinctio dolorem harum illo iusto molestias nulla possimus quas quidem similique sint sunt tenetur unde voluptas.</div>
+        <div>Aspernatur, cupiditate deleniti dolore ea, eius enim excepturi, hic iste itaque laudantium maxime neque nobis perspiciatis quas quis repudiandae soluta suscipit? Debitis dolorum facere, perspiciatis provident qui tempore totam vero!</div>
+        <div>Adipisci commodi est facere ipsum quas. A assumenda autem facilis fugiat harum id iure laboriosam magni, molestias neque quis ratione reprehenderit tenetur voluptates voluptatibus? Aperiam et excepturi quaerat quam veniam.</div>
+        <div>Accusantium ad alias doloremque et explicabo facilis fugit harum impedit itaque, mollitia nemo neque nisi, officia reprehenderit suscipit? Ad consequuntur distinctio earum illo nisi officia praesentium repellat veniam voluptate? Dolores?</div>
+        <div>Mollitia porro possimus voluptatum. A aliquam beatae consequatur deleniti distinctio, earum est ipsam magni quas qui quis quo, recusandae reiciendis tempore voluptatum? Eum inventore omnis optio placeat, quaerat quia. Consequuntur.</div>
+        <div>Aliquid atque cumque dolores ea earum est, perspiciatis quisquam, ratione sed tenetur ullam vel velit. Aliquid asperiores fugit illum mollitia obcaecati quae quaerat quos repellendus. Debitis error illum iure soluta?</div>
+        <div>A accusantium ad atque aut consequatur deleniti enim expedita facilis illum, laboriosam laudantium magni maiores, maxime non odio officia, quibusdam repellat suscipit ut voluptatibus! At deserunt maxime nesciunt rem repudiandae.</div>
+        <div>Ea earum explicabo facere fugit officia omnis placeat quasi, quo rerum voluptas. Aspernatur delectus ea fugiat neque, perspiciatis unde vero vitae. Aspernatur debitis rem sed veniam. Ex molestias quisquam veniam.</div>
+        <div>Alias atque commodi deserunt dolor doloremque ducimus est eveniet impedit iure labore maiores maxime, minima, necessitatibus neque nesciunt pariatur quaerat quos ratione repellat similique temporibus vel veritatis? Eos, inventore vitae.</div>
+        <div>Adipisci cupiditate dicta dignissimos dolor doloribus eligendi est eveniet, hic minima, minus nobis officia quod unde? A ad assumenda, deleniti doloremque et, ex nesciunt quas quidem reprehenderit sequi ullam velit.</div>
+        <div>Accusamus adipisci amet consequatur, deleniti dolor doloribus dolorum impedit laudantium maxime molestias mollitia nam perferendis porro quasi qui quibusdam quisquam rem, suscipit tempore velit? Deleniti eaque iusto molestias ratione unde.</div>
+        <div>Assumenda distinctio dolor doloribus inventore iusto maiores? Ad animi debitis explicabo illum iusto laborum libero nam nostrum, quam qui quod, reiciendis sed suscipit tempora veniam voluptate voluptatum. Ad, animi, veniam.</div>
+        <div>Adipisci aspernatur ducimus, eos esse, est ex illo in iste obcaecati possimus quo unde ut veritatis. Ab accusantium amet animi dolorum excepturi, id iste laudantium neque odio quia recusandae veniam.</div>
+        <div>Ab alias aperiam atque consequatur cupiditate dolorum facilis fugit impedit in praesentium quae, quam quisquam, temporibus vero voluptatem. Alias consectetur corporis expedita laborum magnam obcaecati quisquam quos! Nihil, possimus, voluptatibus!</div>
+        <div>Animi architecto atque aut cumque deserunt doloremque eos error esse eveniet explicabo, facere facilis laudantium magni minima molestiae officia optio pariatur perferendis quam rem sint temporibus tenetur velit veritatis voluptatibus.</div>
+        <div>Aliquam, asperiores assumenda autem corporis dolor, eaque fugiat laboriosam laborum molestiae numquam obcaecati odio perferendis quis quisquam soluta. A, ad architecto deleniti dolorum earum esse fugiat illo iste praesentium vitae.</div>
+        <div>Ad corporis cumque doloribus eaque excepturi fugit minima modi officiis omnis possimus, quisquam recusandae sunt voluptate. Deserunt dolorum eius ex excepturi ipsa, laudantium quaerat quia ratione, recusandae reprehenderit, tempora ut.</div>
+        <div>Ipsum laboriosam molestiae necessitatibus officia quas rem, suscipit tempora voluptas voluptatum! Ab, ea enim in iste nemo obcaecati perspiciatis saepe sit. Alias blanditiis facilis, inventore natus numquam omnis praesentium repellendus.</div>
+        <div>Adipisci asperiores aspernatur dignissimos dolorem ducimus excepturi facere hic id iste itaque modi natus necessitatibus nemo non obcaecati perferendis possimus quas, quibusdam ratione rem rerum sed sequi sit tempora totam?</div>
+        <div>Dolore ducimus earum excepturi incidunt nemo, nobis vel veniam vero voluptatibus voluptatum? Cupiditate eligendi enim minima nemo officiis ullam ut. Error eum excepturi id, illo natus nihil porro quidem quod.</div>
+        <div>Animi asperiores atque culpa dignissimos dolor doloribus, enim esse eum explicabo fugiat impedit iusto labore, laborum magni porro reprehenderit repudiandae sint tenetur? Ad deserunt dicta doloremque, pariatur quasi rerum velit!</div>
+        <div>Adipisci aliquam amet assumenda autem esse laborum magnam maxime, necessitatibus pariatur perspiciatis praesentium qui vero. Consequatur dolores eligendi eos excepturi illo odit officiis quasi quod sunt unde! Accusamus atque, eligendi?</div>
+        <div>Corporis cum excepturi illo odio officiis praesentium, quam reiciendis! Eligendi placeat praesentium reiciendis sint totam. Autem, commodi dicta ducimus eos fuga labore necessitatibus officiis optio placeat quidem sapiente, sint tempora.</div>
+    </div>
+{% endblock %}

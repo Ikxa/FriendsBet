@@ -14,12 +14,11 @@
     <div class="container-fluid mt-3">
         <div class="row">
             {% for match in content["matches"] %}
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card mb-3">
                         <div class="card-body">
                             <div>
-                                <h4 class="card-title text-center">{{ match["homeTeam"]["name"] }} - {{ match["awayTeam"]["name"] }}</h4>
-                                <h5 class="card-title text-center">{{ match["score"]["fullTime"]["homeTeam"] ?? 0 }} - {{ match["score"]["fullTime"]["awayTeam"] ?? 0}}</h5>
+                                <h4 class="card-title text-center">{{ match["homeTeam"]["name"] }} {{ match["score"]["fullTime"]["homeTeam"] ?? 0 }} - {{ match["score"]["fullTime"]["awayTeam"] ?? 0}} {{ match["awayTeam"]["name"] }}</h4>
                             </div>
                             <p class="card-text">{{ match["utcDate"]|date('d/m/Y') }} : Journée 38</p>
                         </div>
