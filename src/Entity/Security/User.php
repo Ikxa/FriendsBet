@@ -55,16 +55,6 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $is_active;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Bet::class, mappedBy="user")
-     */
-    private $bets;
-
-    public function __construct()
-    {
-        $this->bets = new ArrayCollection();
-    }
     
     /**
      * @return mixed
@@ -242,33 +232,5 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // eraseCredentials
-    }
-
-    /**
-     * @return Collection|Bet[]
-     */
-    public function getBets(): Collection
-    {
-        return $this->bets;
-    }
-
-    public function addBet(Bet $bet): self
-    {
-        if (!$this->bets->contains($bet)) {
-            $this->bets[] = $bet;
-            $bet->addUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBet(Bet $bet): self
-    {
-        if ($this->bets->contains($bet)) {
-            $this->bets->removeElement($bet);
-            $bet->removeUser($this);
-        }
-
-        return $this;
     }
 }

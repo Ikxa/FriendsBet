@@ -15,19 +15,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class SignupType extends AbstractType
 {
     /**
-     * @var TranslatorInterface
+     * @param FormBuilderInterface $builder
+     * @param array                $options
      */
-    private $translator;
-    
-    /**
-     * SignupType constructor.
-     *
-     * @param TranslatorInterface $translator
-     */
-    public function __construct(TranslatorInterface $translator) {
-        $this->translator = $translator;
-    }
-    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

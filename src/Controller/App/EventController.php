@@ -7,7 +7,7 @@ use App\Entity\App\Match;
 use App\Entity\App\Sport;
 use App\Form\App\MatchType;
 use App\Api\Football;
-use App\Form\BetType;
+use App\Form\App\BetType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,6 +41,7 @@ class EventController extends AbstractController
     
     /**
      * @Route("/event/bet/{id}", name="event.bet")
+     *
      * @param int                    $id
      * @param EntityManagerInterface $entityManager
      *
@@ -49,6 +50,8 @@ class EventController extends AbstractController
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     *
+     * @return Response
      */
     public function bet(int $id, EntityManagerInterface $entityManager): Response
     {
@@ -58,7 +61,7 @@ class EventController extends AbstractController
             ->getRepository(Match::class)
             ->findOneBy(['matchId' => $content['match']['id']]);
         
-        if (!isset($existingMatch) || empty($existingMatch))
+        /*if (!isset($existingMatch) || empty($existingMatch))
         {
             $match = new Match();
             $sport = $this->getDoctrine()->getRepository(Sport::class)->findOneBy(['label' => 'Football']);
@@ -75,7 +78,7 @@ class EventController extends AbstractController
             $entityManager->flush();
         }
     
-        $teams = array_merge($content['match']['homeTeam'], $content['match']['awayTeam']);
+        $teams = array_merge($content['match']['homeTeam'], $content['match']['awayTeam']);*/
         $bet = new Bet();
         $form = $this->createForm(BetType::class, $bet);
         
