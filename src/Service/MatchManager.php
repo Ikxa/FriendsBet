@@ -7,8 +7,7 @@ namespace App\Service;
 use App\Api\Football;
 use App\Entity\App\Match;
 use App\Entity\App\Sport;
-use App\Entity\Warm;
-use Doctrine\ORM\EntityManager;
+use App\Entity\Security\Warm;
 use Doctrine\ORM\EntityManagerInterface;
 
 class MatchManager
@@ -80,4 +79,12 @@ class MatchManager
         
         return false;
     }
+    
+    // TODO :
+    
+    /**
+     * Quand les dates renvoyés sont différentes de celles en base de données, faire la différence, l'intervalle entre les dates
+     * Et ajouter les matchs manquants
+     * Dans les matchs rajouter un champs league pour savoir si c'est ligue 1 etc ...
+     */
 }

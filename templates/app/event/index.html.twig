@@ -13,20 +13,21 @@
 {{ include('app/event/_navmatch.html.twig') }}
     <div class="container-fluid mt-3">
         <div class="row">
-            {% for match in content["matches"] %}
+            {% for match in matchs %}
                 <div class="col-md-12">
                     <div class="card mb-3">
                         <div class="card-body">
                             <div>
-                                <h4 class="card-title text-center">{{ match["homeTeam"]["name"] }} {{ match["score"]["fullTime"]["homeTeam"] ?? 0 }} - {{ match["score"]["fullTime"]["awayTeam"] ?? 0}} {{ match["awayTeam"]["name"] }}</h4>
+                                <h4 class="card-title text-center">{{ match.firstTeam }} {{ match.scoreFirstTeam ?? 0 }} - {{ match.scoreSecondTeam ?? 0}} {{ match.secondTeam }}</h4>
                             </div>
-                            <p class="card-text">{{ match["utcDate"]|date('d/m/Y') }} : Journée 38</p>
+                            <p class="card-text">{{ match.playedAt|date('d/m/Y') }} : Journée 38</p>
+                            <span class="badge badge-success">{{ match.status }}</span>
                         </div>
                         <div class="card-footer" style="
                             padding-bottom: 45px;
                             padding-top: 16px;
                             ">
-                            <a href="{{ path('event.bet', {'id': match["id"]}) }}" class="btn btn-secondary betButton">Parier</a>
+                            <a href="{{ path('event.bet', {'id': match.id}) }}" class="btn btn-secondary betButton">Parier</a>
                         </div>
                     </div>
                 </div>

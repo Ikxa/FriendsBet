@@ -3,6 +3,7 @@
 namespace App\Entity\Security;
 
 use App\Entity\App\Bet;
+use App\Entity\App\Group;
 use App\Repository\Security\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -55,6 +56,11 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $is_active;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="users")
+     */
+    private $group_defined;
     
     /**
      * @return mixed
@@ -232,5 +238,17 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // eraseCredentials
+    }
+
+    public function getGroupDefined(): ?Group
+    {
+        return $this->group_defined;
+    }
+
+    public function setGroupDefined(?Group $group_defined): self
+    {
+        $this->group_defined = $group_defined;
+
+        return $this;
     }
 }

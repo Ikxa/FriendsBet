@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Security;
 
-use App\Repository\WarmRepository;
+use App\Repository\Security\WarmRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

@@ -2,12 +2,8 @@
 
 namespace App\Controller\App;
 
-use App\Entity\App\Bet;
 use App\Entity\App\Match;
-use App\Entity\App\Sport;
-use App\Form\App\MatchType;
 use App\Api\Football;
-use App\Form\App\BetType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,14 +23,14 @@ class EventController extends AbstractController
      */
     public function index(): Response
     {
-        $times = $this->api->getTimes();
-        $uri = 'https://api.football-data.org/v2/competitions/FL1/matches/?dateFrom='.$times['startWeek'].'&'.'dateTo='.$times['endWeek'];
-        $content = $this->api->sendRequest('GET', $uri);
+        $matchs = $this->getDoctrine()
+            ->getRepository(Match::class)
+            ->findAll();
         
         return $this->render(
             'app/event/index.html.twig',
             [
-                'content' => $content,
+                'matchs' => $matchs,
             ]
         );
     }
