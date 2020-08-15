@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row py-5 mt-4 align-items-center">
             <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
-                <img src="https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg" alt="" class="img-fluid mb-3 d-none d-md-block">
+                <img src="{{ asset('images/signup.svg') }}" alt="" class="img-fluid mb-3 d-none d-md-block">
                 <h1>Création d'un compte</h1>
                 <p class="font-italic text-muted mb-0">Créez un compte afin de commencer vos meilleurs paris en ligne.</p>
             </div>
@@ -26,8 +26,8 @@
                     <div class="col-lg-12 mb-4">
                         {{ form_row(form.phone) }}
                     </div>
-                    <div class="col-lg-12 mx-auto mb-0">
-                        <input type="submit" value="Inscription" class="yellow-btn">
+                    <div class="col-12  login-btn-center">
+                        <input type="submit" value="Inscription" class="login-btn">
                     </div>
                 </div>
                 {{ form_end(form) }}

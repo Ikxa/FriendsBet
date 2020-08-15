@@ -3,44 +3,69 @@
 {% block title 'FriendsBet - Votre groupe' %}
 
 {% block body %}
-{{ include('app/home/_navbar.html.twig') }}
+    {{ include('app/home/_navbar.html.twig') }}
     <div class="container">
-        <div class="row">
-            {% if form is defined and form is not null %}
-                {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <div class="form-group">
-                    <input type="submit" value="Créer">
+        <div class="row my-4">
+            <div class="col">
+                {% if form is defined and form is not null %}
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <div class="form-group py-4">
+                        <input type="submit" value="Créer ton groupe" class="btn btn-success float-right">
+                    </div>
+                    {{ form_end(form) }}
+                {% else %}
+                    <h3 class="group_name">{{ group.name }}</h3>
+                    {% if group.token is defined and group.token is not null %}
+                        <h4>Envoyez ce lien à vos amis pour qu'ils rejoignent votre groupe : <span class="token">http://jordan.renard/groups/join/{{ group.token }}</span></h4>
+                    {% endif %}
+                    <button type="button" class="btn btn-access login-btn-center" data-toggle="modal" data-target="#staticBackdrop">
+                        Quittez ce groupe en cliquant ici
+                    </button>
+                {% endif %}
+            </div>
+            <div class="col">
+                <h3>Les membres de ton groupe</h3>
+                <div class="col">
+                    <ul>
+                        {% if members is defined and members is not null %}
+                            {% for member in members %}
+                                <li class="text-black">{{ member.username }}</li>
+                            {% endfor %}
+                        {% else %}
+                            {% if group is defined and group is not null %}
+                                <li class="text-black">Il n'y a pas encore de membres dans ton groupe ! Invite les.</li>
+                            {% else %}
+                                <li class="text-black">Tu ne fais pas parti d'un groupe, créer en un rapidement !</li>
+                            {% endif %}
+                        {% endif %}
+                    </ul>
                 </div>
-                {{ form_end(form) }}
-            {% else %}
-                <h1 class="adrien">Votre groupe est défini, vous faites partie du club {{ group.name }}</h1>
-                <h2>Envoyez ce token à vos amis pour qu'ils rejoignent votre groupe : <span class="token">{{ group.token }}</span></h2>
+            </div>
 
-                <button type="button" class="btn btn-access btn-login" data-toggle="modal" data-target="#staticBackdrop">
-                    Quittez ce groupe en cliquant ici
-                </button>
-
-                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment quitter ce groupe ?</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                Vous allez quitter votre groupe.
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                 <a class="btn btn-danger" href="{{ path('user.groups.leave', {'token': group.token}) }}">Quitter</a>
-                            </div>
+            {# <editor-fold desc="Modal"> #}
+            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment quitter ce groupe ?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Vous allez quitter votre groupe.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                            {% if group.token is defined and group.token is not null %}
+                                <a class="btn btn-danger" href="{{ path('user.groups.leave', {'token': group.token}) }}">Quitter</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
-            {% endif %}
+            </div>
+            {# </editor-fold> #}
         </div>
     </div>
 {% endblock %}

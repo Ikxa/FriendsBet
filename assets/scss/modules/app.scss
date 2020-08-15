@@ -11,44 +11,34 @@
   padding: 100px 0;
 }
 
-.hauteur-logo {
-    height: 40px;
-    witdh: 40px;
-}
-
-.yellow-btn {
-  padding: 13px 20px;
-  background-color: #121413;
-  border-radius: 0;
-  font-size: 20px;
-  font-weight: bold;
-  color: $white;
-  margin-bottom: 14px;
-  border: 1px solid $mainColor;
-
-  &:hover {
-    border: 1px solid $mainColor;
-    background-color: $white;
-    color: $mainColor;
-  }
-}
-
 .main-logo {
   width: 350px;
   height: auto;
 }
 
-.hauteur_logo {
-  height: 100px;
-  witdh: 100px;
-}
-
-.competition-item {
-  border: 2px solid lightgrey;
-  border-radius: 5px;
-  padding: 10px;
-}
-
 .betButton {
   float: right;
+}
+
+.login-btn {
+  padding: 13px 20px;
+  background-color: #fdbb28;
+  border-radius: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 14px;
+  border: 1px solid #fdbb28;
+
+  &:hover {
+    border: 1px solid #fdbb28;
+    background-color: #fff;
+    color: #fdbb28;
+  }
+}
+
+.group_name {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-family: 'Pangolin', cursive;
 }

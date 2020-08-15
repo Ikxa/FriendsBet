@@ -37,9 +37,9 @@ class UserController extends AbstractController
     public function index(GroupBuilder $groupBuilder, Request $request): Response
     {
         $groupFactory = new GroupBuilder();
-        $group = new Group();
-        $form = $this->createForm(GroupType::class, $group);
         $user = $this->entityManager->getRepository(User::class)->find($this->getUser()->getId());
+        $group = $user->getGroupDefined() ?? new Group();
+        $form = $this->createForm(GroupType::class, $group);
         $userGroupName = null !== $user->getGroupDefined() ? $user->getGroupDefined()->getName() : null;
         $form->handleRequest($request);
 
@@ -55,9 +55,14 @@ class UserController extends AbstractController
                 $user->setGroupDefined($group);
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
+                
+                return $this->redirectToRoute('user.groups');
             }
         } else {
             // L'utilisateur connecté a un groupe donc on affiche les informations de ce groupe avec un bouton "quitter".
+            $members = $this->entityManager
+                ->getRepository(User::class)
+                ->findBy(['group_defined' => $group->getId()]);
         }
 
         return $this->render(
@@ -65,6 +70,7 @@ class UserController extends AbstractController
             [
                 'form' => !isset($userGroupName) ? $form->createView() : NULL,
                 'group' => isset($userGroupName) ? $user->getGroupDefined() : NULL,
+                'members' => $members ?? NULL,
             ]
         );
     }
@@ -92,8 +98,27 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('user.groups');
     }
-
-    /*
-     * TODO : Créer une fonction qui récupère un token en url, affiche un bouton permettant de le rejoindre et défini le groupe du token à l'utilisateur
+    
+    /**
+     * @Route("/groups/join/{token}", name="user.groups.join")
+     * @param string $token
      */
+    public function join(string $token)
+    {
+        $user = $this->entityManager
+            ->getRepository(User::class)
+            ->findOneBy(['id' => $this->getUser()]);
+        $group = $this->entityManager
+            ->getRepository(Group::class)
+            ->findOneBy(['token' => $token]);
+        
+        $group->setMembers((int) ($group->getMembers() + 1));
+        $user->setGroupDefined($group);
+        
+        $this->entityManager->persist($group);
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
+        
+        return $this->redirectToRoute('user.groups');
+    }
 }
