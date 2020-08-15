@@ -17,10 +17,13 @@ require('bootstrap');
 // require('bootstrap/js/dist/tooltip');
 // require('bootstrap/js/dist/popover');
 
+alert('salut1');
+
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
-    $('.carousel').carousel()
+    $('.carousel').carousel();
 });
+
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
 // import $ from 'jquery';

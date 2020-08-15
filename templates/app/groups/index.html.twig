@@ -3,6 +3,7 @@
 {% block title 'FriendsBet - Votre groupe' %}
 
 {% block body %}
+{{ include('app/home/_navbar.html.twig') }}
     <div class="container">
         <div class="row">
             {% if form is defined and form is not null %}
@@ -13,9 +14,32 @@
                 </div>
                 {{ form_end(form) }}
             {% else %}
-                <h1>Votre groupe est défini, vous faites partis du club {{ group.name }}</h1>
-                <h2>Envoyez ce token à vos amis pour qu'ils rejoignent votre groupe : {{ group.token }}</h2>
-                <h3>Quittez ce groupe en cliquant <a href="{{ path('user.groups.leave') }}">ici</a> !</h3>
+                <h1 class="adrien">Votre groupe est défini, vous faites partie du club {{ group.name }}</h1>
+                <h2>Envoyez ce token à vos amis pour qu'ils rejoignent votre groupe : <span class="token">{{ group.token }}</span></h2>
+
+                <button type="button" class="btn btn-access btn-login" data-toggle="modal" data-target="#staticBackdrop">
+                    Quittez ce groupe en cliquant ici
+                </button>
+
+                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment quitter ce groupe ?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Vous allez quitter votre groupe.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                 <a class="btn btn-danger" href="{{ path('user.groups.leave', {'token': group.token}) }}">Quitter</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {% endif %}
         </div>
     </div>
