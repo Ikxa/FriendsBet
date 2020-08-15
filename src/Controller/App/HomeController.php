@@ -15,7 +15,7 @@ class HomeController extends AbstractController
      * @var ParameterBagInterface
      */
     private $params;
-    
+
     /**
      * @param Football              $footballApi
      * @param ParameterBagInterface $params
@@ -25,7 +25,7 @@ class HomeController extends AbstractController
         $this->params = $params;
         $this->api = $footballApi;
     }
-    
+
     /**
      * @Route("/", name="home.index")
      *
@@ -38,12 +38,12 @@ class HomeController extends AbstractController
         $twig = 'app/home/index_not_logged.html.twig';
         $path = $this->params->get('public_path');
         $images = [];
-        
+
         if ($this->getUser()) {
             $twig = 'app/home/index_logged.html.twig';
             $user = $this->getUser();
             $matchManager->addMatchBetweenDates();
-    
+
             if ($handle = opendir($path[0].DIRECTORY_SEPARATOR.'league')) {
                 while (FALSE !== ($entry = readdir($handle))) {
                     $images[] = $entry;
@@ -52,7 +52,41 @@ class HomeController extends AbstractController
                 closedir($handle);
             }
         }
-        
+
+        return $this->render(
+            $twig,
+            [
+                'user' => $user ?? NULL,
+                'images' => $images ?? NULL,
+            ]
+        );
+    }
+
+    /**
+     * @Route("/2", name="home.index2")
+     *
+     * @param MatchManager $matchManager
+     *
+     * @return Response
+     */
+    public function index2(MatchManager $matchManager): Response
+    {
+        $twig = 'app/home/index_logged.html.twig';
+        $path = $this->params->get('public_path');
+        $images = [];
+
+            $twig = 'app/home/index_logged.html.twig';
+            $user = $this->getUser();
+            $matchManager->addMatchBetweenDates();
+
+            if ($handle = opendir($path[0].DIRECTORY_SEPARATOR.'league')) {
+                while (FALSE !== ($entry = readdir($handle))) {
+                    $images[] = $entry;
+                }
+                $images = array_diff($images, [".", ".."]);
+                closedir($handle);
+            }
+
         return $this->render(
             $twig,
             [

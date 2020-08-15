@@ -18,7 +18,7 @@ class UserController extends AbstractController
      * @var EntityManagerInterface
      */
     private $entityManager;
-    
+
     /**
      * @inheritDoc
      */
@@ -26,7 +26,7 @@ class UserController extends AbstractController
     {
         $this->entityManager = $entityManager;
     }
-    
+
     /**
      * @Route("/groups", name="user.groups")
      * @param GroupBuilder $groupBuilder
@@ -40,9 +40,9 @@ class UserController extends AbstractController
         $group = new Group();
         $form = $this->createForm(GroupType::class, $group);
         $user = $this->entityManager->getRepository(User::class)->find($this->getUser()->getId());
-        $userGroupName = $user->getGroupDefined()->getName();
+        $userGroupName = null !== $user->getGroupDefined() ? $user->getGroupDefined()->getName() : null;
         $form->handleRequest($request);
-        
+
         if (!isset($userGroupName) || empty($userGroupName)) {
             // L'utilisateur connecté n'a pas de groupe, il peut en créer un ou en rejoindre un via un token.
             if ($form->isSubmitted() && $form->isValid()) {
@@ -50,7 +50,7 @@ class UserController extends AbstractController
                 $group->setCreatedAt($groupFactory->getCreatedAt());
                 $group->setIsActive($groupFactory->isActive());
                 $group->setMembers(1);
-                
+
                 $this->entityManager->persist($group);
                 $user->setGroupDefined($group);
                 $this->entityManager->persist($user);
@@ -59,7 +59,7 @@ class UserController extends AbstractController
         } else {
             // L'utilisateur connecté a un groupe donc on affiche les informations de ce groupe avec un bouton "quitter".
         }
-        
+
         return $this->render(
             'app/groups/index.html.twig',
             [
@@ -68,15 +68,31 @@ class UserController extends AbstractController
             ]
         );
     }
-    
+
     /**
      * @Route("/groups/{token}/leave", name="user.groups.leave")
      */
-    public function leaveGroup()
+    public function leaveGroup(string $token)
     {
-    
+        $user = $this->entityManager
+            ->getRepository(User::class)
+            ->findOneBy(['id' => $this->getUser()]);
+        $group = $this->entityManager
+            ->getRepository(Group::class)
+            ->findOneBy(['token' => $token]);
+
+        if ($user->getGroupDefined()->getToken() === $group->getToken())
+        {
+            $user->setGroupDefined(null);
+            $group->setMembers((int) ($group->getMembers() - 1));
+
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+        }
+
+        return $this->redirectToRoute('user.groups');
     }
-    
+
     /*
      * TODO : Créer une fonction qui récupère un token en url, affiche un bouton permettant de le rejoindre et défini le groupe du token à l'utilisateur
      */
