@@ -3,5 +3,20 @@
 {% block title 'FriendsBet - Votre groupe' %}
 
 {% block body %}
-
+    <div class="container">
+        <div class="row">
+            {% if form is defined and form is not null %}
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <div class="form-group">
+                    <input type="submit" value="Créer">
+                </div>
+                {{ form_end(form) }}
+            {% else %}
+                <h1>Votre groupe est défini, vous faites partis du club {{ group.name }}</h1>
+                <h2>Envoyez ce token à vos amis pour qu'ils rejoignent votre groupe : {{ group.token }}</h2>
+                <h3>Quittez ce groupe en cliquant <a href="{{ path('user.groups.leave') }}">ici</a> !</h3>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}
