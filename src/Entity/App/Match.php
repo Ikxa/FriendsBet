@@ -68,6 +68,11 @@ class Match
      */
     private $sport;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $is_custom;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -189,6 +194,18 @@ class Match
     public function setSport(?Sport $sport): self
     {
         $this->sport = $sport;
+
+        return $this;
+    }
+
+    public function getIsCustom(): ?bool
+    {
+        return $this->is_custom;
+    }
+
+    public function setIsCustom(?bool $is_custom): self
+    {
+        $this->is_custom = $is_custom;
 
         return $this;
     }
