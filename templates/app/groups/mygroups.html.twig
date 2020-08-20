@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'FriendsBet - Votre groupe' %}
+
+{% block body %}
+    {{ include('app/home/navtest.html.twig') }}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                            <a class="nav-link active" href="#">Mon groupe</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="#">Classement</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="#">Historique</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link href="#">Paramètres</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Les membres de ton groupe</h3>
+                <div class="col">
+                    <ul>
+                        {% if members is defined and members is not null %}
+                            {% for member in members %}
+                                <li class="text-black">{{ member.username }}</li>
+                            {% endfor %}
+                        {% else %}
+                            {% if group is defined and group is not null %}
+                                <li class="text-black">Il n'y a pas encore de membres dans ton groupe ! Invite les.</li>
+                            {% else %}
+                                <li class="text-black">Tu ne fais pas parti d'un groupe, crées-en un rapidement !</li>
+                            {% endif %}
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

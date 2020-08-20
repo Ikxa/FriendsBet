@@ -1,0 +1,92 @@
+
+    <nav class="navbar navbar-expand-lg navbar-light white scrolling-navbar">
+      <div class="container">
+
+        <li class="navbar-brand js-scroll-trigger"><a href="{{ path('home.index') }}"><img src="{{ asset('images/logofinal.png') }}" alt="logo" class="img-fluid main-logo"/></li>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+          <!-- Partie gauche -->
+
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('event.add') }}">
+                        <i class="fas fa-plus-circle"></i> Ajouter un match
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('event.index') }}">
+                        <i class="fas fa-futbol"></i> Voir les matchs
+                </a>
+            </li>
+          </ul>
+ 
+          <!-- Partie droite -->
+                {% if not app.user %}
+                <li class="nav-item dropdown mx-0 mx-lg-1">
+                    <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-alt"></i>
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item dropdown-user" href="{{ path('security.login') }}">Se connecter</a>
+                        <a class="dropdown-item dropdown-user" href="{{ path('security.signup') }}">S'inscrire</a>
+                    </div>
+                </li>
+                {% endif %}
+          <ul class="navbar-nav nav-flex-icons">
+            <li class="nav-item">
+              <a href="#" class="nav-link waves-effect" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li> 
+            <li class="nav-item">
+              <a href="#" class="nav-link waves-effect" target="_blank">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link waves-effect"
+                target="_blank">
+                <i class="fas fa-envelope-square"></i>
+              </a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a href=""{{ path('groups.index') }}""
+                class="nav-link border border-light rounded rounded js-scroll-trigger" target="_blank">
+                <i class="fas fa-user mr-1"></i>
+                {% if app.user %}
+                {{app.user.username}}
+                {% endif %}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+              <!-- Zone dessous -->
+    <div class="card card-intro blue-gradient">
+
+      <div class="card-body white-text rgba-black-light text-center">
+
+        <div class="row d-flex justify-content-center">
+
+          <div class="col-md-6">
+
+            <p class="h5 mb-2">
+              Bienvenue sur FriendsBet
+            </p>
+
+            <p class="mb-0">N'oubliez jamais que Jordan est une petite salope.</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>

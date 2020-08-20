@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'FriendsBet - Votre groupe' %}
+
+{% block body %}
+    {{ include('app/home/navtest.html.twig') }}
+    <div class="col lg-4">
+    <ul class="nav flex-column">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Mon groupe</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Classement</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Historique des matchs</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Paramètres</a>
+  </li>
+</ul>
+    </div>
+    <div class="container">
+        <div class="row my-4">
+            <div class="col">
+                {% if form is defined and form is not null %}
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <div class="form-group py-4">
+                        <input type="submit" value="Créer ton groupe" class="btn btn-success float-right">
+                    </div>
+                    {{ form_end(form) }}
+                {% else %}
+                    <h3 class="group_name">{{ group.name }}</h3>
+                    {% if group.token is defined and group.token is not null %}
+                        <h4>Envoyez ce lien à vos amis pour qu'ils rejoignent votre groupe : <span class="token">http://jordan.renard/groups/join/{{ group.token }}</span></h4>
+                    {% endif %}
+                    <button type="button" class="btn btn-access login-btn-center" data-toggle="modal" data-target="#staticBackdrop">
+                        Quittez ce groupe en cliquant ici
+                    </button>
+                {% endif %}
+            </div>
+{% endblock %}

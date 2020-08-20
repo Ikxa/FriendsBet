@@ -30,6 +30,9 @@
                 {% endif %}
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('user.groups') }}">
+                            {% if app.user %}
+                            {{app.user.username}}
+                            {% endif %}
                         <i class="fas fa-users">
                         </i>
                     </a>
