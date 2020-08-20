@@ -9,8 +9,9 @@
 {% endblock %}
 
 {% block body %}
+        {{ include('app/home/navtest.html.twig') }}
     <div class="container-fluid container-parallax">
-        {{ include('app/home/_navbar.html.twig') }}
+
         <div class="row text-center row-parallax">
             <h1>Bonjour {% if user is defined %} {{ user.username }} {% endif %}</h1>
             <h2>Prêt à parier ?</h2>
