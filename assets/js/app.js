@@ -20,7 +20,9 @@ require('bootstrap');
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
     $('.carousel').carousel();
+    $('.mdb-select').materialSelect();
 });
+
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
 // import $ from 'jquery';
