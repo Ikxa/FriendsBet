@@ -17,6 +17,12 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class EventController extends AbstractController
 {
+/**
+* @Route("/event/bet", name="event.bet")
+*/
+public function bet() {
+    return new Response('Coucou');
+  }
     /**
      * @var Football
      */

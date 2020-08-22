@@ -16,9 +16,15 @@
             {% for match in matchs %}
                 <div class="col-md-12">
                     <div class="card mb-3">
-                        <div class="card-body">
+                        <div class="event-visu">
                             <div>
-                                <h4 class="card-title text-center">{{ match.firstTeam }} {{ match.scoreFirstTeam ?? 0 }} - {{ match.scoreSecondTeam ?? 0}} {{ match.secondTeam }}</h4>
+                                <h4 class="card-title text-center mb-lg-3">
+                                    <span class="team-title-left">{{ match.firstTeam }}</span>
+                                    <span class="team-score">{{ match.scoreFirstTeam ?? 0 }}</span>
+                                    <span> - </span>
+                                    <span class="team-score">{{ match.scoreSecondTeam ?? 0}}</span>
+                                    <span class="team-title-right">{{ match.secondTeam }}</span>
+                                </h4>
                             </div>
                             <p class="card-text">{{ match.playedAt|date('d/m/Y') }} : Journée 38</p>
                             <span class="badge badge-success">{{ match.status }}</span>

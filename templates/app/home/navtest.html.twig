@@ -24,21 +24,17 @@
                         <i class="fas fa-futbol"></i> Voir les matchs
                 </a>
             </li>
+            {% if app.user%}
+            <li class="nav-item">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('groups.index') }}">
+                        <i class="fas fa-users"></i>  Mon groupe
+                </a>
+            </li>
+            {% endif %}
           </ul>
  
           <!-- Partie droite -->
-                {% if not app.user %}
-                <li class="nav-item dropdown mx-0 mx-lg-1">
-                    <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user-alt"></i>
-                    </a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item dropdown-user" href="{{ path('security.login') }}">Se connecter</a>
-                        <a class="dropdown-item dropdown-user" href="{{ path('security.signup') }}">S'inscrire</a>
-                    </div>
-                </li>
-                {% endif %}
           <ul class="navbar-nav nav-flex-icons">
             <li class="nav-item">
               <a href="#" class="nav-link waves-effect" target="_blank">
@@ -56,11 +52,22 @@
                 <i class="fas fa-envelope-square"></i>
               </a>
             </li>
+            {% if not app.user %}
+            <li class="nav-item dropdown mx-0 mx-lg-1">
+              <a class="nav-link dropdown-toggle px-0 px-lg-3 rounded js-scroll-trigger" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-alt"></i>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item dropdown-user" href="{{ path('security.login') }}">Se connecter</a>
+                <a class="dropdown-item dropdown-user" href="{{ path('security.signup') }}">S'inscrire</a>
+              </div>
+            </li>
+            {% endif %}
+            {% if app.user %}
             <li class="nav-item mx-0 mx-lg-1">
               <a href=""{{ path('groups.index') }}""
                 class="nav-link border border-light rounded rounded js-scroll-trigger" target="_blank">
                 <i class="fas fa-user mr-1"></i>
-                {% if app.user %}
                 {{app.user.username}}
                 {% endif %}
               </a>
