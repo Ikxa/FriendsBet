@@ -7,6 +7,7 @@ use App\Api\Football;
 use App\Form\App\MatchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -53,15 +54,17 @@ class EventController extends AbstractController
      * @Route("/event/add", name="event.add")
      * @param EntityManagerInterface $em
      */
-    public function add(EntityManagerInterface $em): Response
+    public function add(EntityManagerInterface $em, Request $request): Response
     {
         $match = new Match();
-        $form = $this->createForm(MatchType::class);
+        $form = $this->createForm(MatchType::class, $match);
+        $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
             $match->setIsCustom(TRUE);
             $match->setPlayedAt(new \DateTime());
             $match->setIsOver(FALSE);
+            $match->setMatchId(mt_rand());
             
             $em->persist($match);
             $em->flush();

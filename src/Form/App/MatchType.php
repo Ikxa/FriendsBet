@@ -60,13 +60,21 @@ class MatchType extends AbstractType
                 [
                     'label' => 'Status du match',
                     'choices' => $this->getStatus(),
+                    'choice_label' => function ($choice, $key, $value) {
+                        return strtoupper($value);
+                    },
                 ]
             )
             ->add(
                 'winner',
-                TextType::class,
+                ChoiceType::class,
                 [
                     'label' => 'Gagnant du match',
+                    'choices' => [
+                        'À déterminer' => 0,
+                        'Équipe 1' => 1,
+                        'Équipe 2' => 2,
+                    ],
                 ]
             );
     }

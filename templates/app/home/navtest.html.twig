@@ -25,7 +25,7 @@
                 </li>
                 {% if app.user %}
                     <li class="nav-item">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('groups.index') }}">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('user.groups') }}">
                             <i class="fas fa-users"></i> Mon groupe
                         </a>
                     </li>
@@ -64,7 +64,7 @@
                 {% endif %}
                 {% if app.user %}
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a href=""{{ path('groups.index') }}""
+                    <a href="{{ path('user.groups') }}"
                     class="nav-link border border-light rounded rounded js-scroll-trigger" target="_blank">
                     <i class="fas fa-user mr-1"></i>
                     {{ app.user.username }}

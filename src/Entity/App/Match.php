@@ -54,7 +54,7 @@ class Match
     private $status;
     
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      */
     private $winner;
     
@@ -162,12 +162,20 @@ class Match
         return $this;
     }
     
-    public function getWinner(): ?string
+    /**
+     * @return mixed
+     */
+    public function getWinner()
     {
         return $this->winner;
     }
     
-    public function setWinner(string $winner): self
+    /**
+     * @param mixed $winner
+     *
+     * @return Match
+     */
+    public function setWinner($winner)
     {
         $this->winner = $winner;
         

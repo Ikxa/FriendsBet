@@ -18,4 +18,12 @@ class GroupsController extends AbstractController
     {
         return new Response('Coucou');
     }
+    
+    /**
+     * @Route("/groups/settings", name="groups.settings")
+     */
+    public function settings()
+    {
+        return new Response('Coucou2');
+    }
 }
