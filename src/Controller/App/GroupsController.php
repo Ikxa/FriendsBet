@@ -12,9 +12,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class GroupsController extends AbstractController
 {
     /**
-    * @Route("/groups/index", name="groups.index")
-    */
-    public function index() {
+     * @Route("/groups/index", name="groups.index")
+     */
+    public function index()
+    {
         return new Response('Coucou');
     }
 }

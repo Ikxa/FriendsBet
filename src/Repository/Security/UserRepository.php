@@ -7,10 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method User|null find($id, $lockMode = null, $lockVersion = null)
- * @method User|null findOneBy(array $criteria, array $orderBy = null)
+ * @method User|null find($id, $lockMode = NULL, $lockVersion = NULL)
+ * @method User|null findOneBy(array $criteria, array $orderBy = NULL)
  * @method User[]    findAll()
- * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method User[]    findBy(array $criteria, array $orderBy = NULL, $limit = NULL, $offset = NULL)
  */
 class UserRepository extends ServiceEntityRepository
 {
@@ -18,7 +18,7 @@ class UserRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, User::class);
     }
-
+    
     // /**
     //  * @return User[] Returns an array of User objects
     //  */
@@ -35,7 +35,7 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
     */
-
+    
     /*
     public function findOneBySomeField($value): ?User
     {

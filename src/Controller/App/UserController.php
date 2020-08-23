@@ -18,7 +18,7 @@ class UserController extends AbstractController
      * @var EntityManagerInterface
      */
     private $entityManager;
-
+    
     /**
      * @inheritDoc
      */
@@ -26,7 +26,7 @@ class UserController extends AbstractController
     {
         $this->entityManager = $entityManager;
     }
-
+    
     /**
      * @Route("/groups", name="user.groups")
      * @param GroupBuilder $groupBuilder
@@ -40,9 +40,9 @@ class UserController extends AbstractController
         $user = $this->entityManager->getRepository(User::class)->find($this->getUser()->getId());
         $group = $user->getGroupDefined() ?? new Group();
         $form = $this->createForm(GroupType::class, $group);
-        $userGroupName = null !== $user->getGroupDefined() ? $user->getGroupDefined()->getName() : null;
+        $userGroupName = NULL !== $user->getGroupDefined() ? $user->getGroupDefined()->getName() : NULL;
         $form->handleRequest($request);
-
+        
         if (!isset($userGroupName) || empty($userGroupName)) {
             // L'utilisateur connecté n'a pas de groupe, il peut en créer un ou en rejoindre un via un token.
             if ($form->isSubmitted() && $form->isValid()) {
@@ -50,7 +50,7 @@ class UserController extends AbstractController
                 $group->setCreatedAt($groupFactory->getCreatedAt());
                 $group->setIsActive($groupFactory->isActive());
                 $group->setMembers(1);
-
+                
                 $this->entityManager->persist($group);
                 $user->setGroupDefined($group);
                 $this->entityManager->persist($user);
@@ -64,7 +64,7 @@ class UserController extends AbstractController
                 ->getRepository(User::class)
                 ->findBy(['group_defined' => $group->getId()]);
         }
-
+        
         return $this->render(
             'app/groups/index.html.twig',
             [
@@ -74,7 +74,7 @@ class UserController extends AbstractController
             ]
         );
     }
-
+    
     /**
      * @Route("/groups/{token}/leave", name="user.groups.leave")
      */
@@ -86,16 +86,15 @@ class UserController extends AbstractController
         $group = $this->entityManager
             ->getRepository(Group::class)
             ->findOneBy(['token' => $token]);
-
-        if ($user->getGroupDefined()->getToken() === $group->getToken())
-        {
-            $user->setGroupDefined(null);
-            $group->setMembers((int) ($group->getMembers() - 1));
-
+        
+        if ($user->getGroupDefined()->getToken() === $group->getToken()) {
+            $user->setGroupDefined(NULL);
+            $group->setMembers((int)($group->getMembers() - 1));
+            
             $this->entityManager->persist($user);
             $this->entityManager->flush();
         }
-
+        
         return $this->redirectToRoute('user.groups');
     }
     
@@ -112,7 +111,7 @@ class UserController extends AbstractController
             ->getRepository(Group::class)
             ->findOneBy(['token' => $token]);
         
-        $group->setMembers((int) ($group->getMembers() + 1));
+        $group->setMembers((int)($group->getMembers() + 1));
         $user->setGroupDefined($group);
         
         $this->entityManager->persist($group);

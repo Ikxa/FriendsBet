@@ -7,10 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Warm|null find($id, $lockMode = null, $lockVersion = null)
- * @method Warm|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Warm|null find($id, $lockMode = NULL, $lockVersion = NULL)
+ * @method Warm|null findOneBy(array $criteria, array $orderBy = NULL)
  * @method Warm[]    findAll()
- * @method Warm[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Warm[]    findBy(array $criteria, array $orderBy = NULL, $limit = NULL, $offset = NULL)
  */
 class WarmRepository extends ServiceEntityRepository
 {
@@ -18,7 +18,7 @@ class WarmRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Warm::class);
     }
-
+    
     // /**
     //  * @return Warm[] Returns an array of Warm objects
     //  */
@@ -35,7 +35,7 @@ class WarmRepository extends ServiceEntityRepository
         ;
     }
     */
-
+    
     /*
     public function findOneBySomeField($value): ?Warm
     {

@@ -28,7 +28,8 @@ class MatchManager
      * @param Football               $footballApi
      * @param EntityManagerInterface $em
      */
-    public function __construct(Football $footballApi, EntityManagerInterface $em) {
+    public function __construct(Football $footballApi, EntityManagerInterface $em)
+    {
         $this->api = $footballApi;
         $this->entityManager = $em;
     }
@@ -36,7 +37,7 @@ class MatchManager
     public function verifyWarm(array $times)
     {
         $warmRepository = $this->entityManager->getRepository(Warm::class);
-    
+        
         return $warmRepository->findOneBy(['start_date' => new \DateTime($times['startWeek']), 'end_date' => new \DateTime($times['endWeek'])]);
     }
     
@@ -50,7 +51,7 @@ class MatchManager
             $uri = 'https://api.football-data.org/v2/competitions/FL1/matches/?dateFrom='.$times['startWeek'].'&'.'dateTo='.$times['endWeek'];
             $content = $this->api->sendRequest('GET', $uri);
             $warm = new Warm();
-    
+            
             // Ajoutons les matchs récupérés
             foreach ($content["matches"] as $match) {
                 $matchToSave = new Match();
@@ -65,7 +66,7 @@ class MatchManager
                 $matchToSave->setSport($sport);
                 $matchToSave->setStatus($match['status']);
                 $matchToSave->setWinner('UNDEFINED');
-        
+                
                 $this->entityManager->persist($matchToSave);
             }
             $warm->setStartDate(new \DateTime($times['startWeek']));
@@ -74,10 +75,10 @@ class MatchManager
             $this->entityManager->persist($warm);
             $this->entityManager->flush();
             
-            return true;
+            return TRUE;
         }
         
-        return false;
+        return FALSE;
     }
     
     // TODO :

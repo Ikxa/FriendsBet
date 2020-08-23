@@ -25,7 +25,7 @@ class GroupBuilder
      *
      * @var bool
      */
-    private $is_active = true;
+    private $is_active = TRUE;
     
     /**
      * Limit for the token
@@ -37,7 +37,8 @@ class GroupBuilder
     /**
      * @inheritDoc
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->created_at = new \DateTime();
         $this->token = $this->generateToken();
     }

@@ -9,15 +9,14 @@
 {% endblock %}
 
 {% block body %}
-        {{ include('app/home/navtest.html.twig') }}
+    {{ include('app/home/navtest.html.twig') }}
     <div class="container-fluid container-parallax">
-
         <div class="row text-center row-parallax">
             <h1>Bonjour {% if user is defined %} {{ user.username }} {% endif %}</h1>
             <h2>Prêt à parier ?</h2>
             <div class="leagues d-flex justify-content-between flex-wrap">
                 {% for image in images %}
-                    <a href=""><img src="{{ asset('images/league/' ~ image) }}" alt="{{ image }}" class="img-fluid img-league" /></a>
+                    <a href=""><img src="{{ asset('images/league/' ~ image) }}" alt="{{ image }}" class="img-fluid img-league"/></a>
                 {% endfor %}
             </div>
             <div id="carouselExampleFade" class="carousel slide carousel-fade bestMatch col-12" data-ride="carousel">

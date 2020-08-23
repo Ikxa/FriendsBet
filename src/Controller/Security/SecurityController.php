@@ -26,22 +26,24 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
         
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $user->setCreatedAt(new \DateTime());
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
-            $user->setIsActive(true);
+            $user->setIsActive(TRUE);
             $user->addRole('ROLE_USER');
             $em->persist($user);
             $em->flush();
             
             return $this->redirectToRoute('security.login');
         }
-    
-        return $this->render('security/signup.html.twig', [
-            'form' => $form->createView()
-        ]);
+        
+        return $this->render(
+            'security/signup.html.twig',
+            [
+                'form' => $form->createView(),
+            ]
+        );
     }
     
     /**

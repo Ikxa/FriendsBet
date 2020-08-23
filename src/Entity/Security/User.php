@@ -21,27 +21,27 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      */
     private $id;
-
+    
     /**
      * @ORM\Column(type="string", length=100)
      */
     private $username;
-
+    
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $email;
-
+    
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $password;
-
+    
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
      */
     private $phone;
-
+    
     /**
      * @ORM\Column(type="datetime")
      */
@@ -51,12 +51,12 @@ class User implements UserInterface
      * @ORM\Column(name="roles", type="array")
      */
     private $roles = [];
-
+    
     /**
      * @ORM\Column(type="boolean")
      */
     private $is_active;
-
+    
     /**
      * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="users")
      */
@@ -229,7 +229,7 @@ class User implements UserInterface
      */
     public function getSalt(): ?string
     {
-        return null;
+        return NULL;
     }
     
     /**
@@ -239,16 +239,16 @@ class User implements UserInterface
     {
         // eraseCredentials
     }
-
+    
     public function getGroupDefined(): ?Group
     {
         return $this->group_defined;
     }
-
+    
     public function setGroupDefined(?Group $group_defined): self
     {
         $this->group_defined = $group_defined;
-
+        
         return $this;
     }
 }

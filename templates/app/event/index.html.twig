@@ -9,8 +9,8 @@
 {% endblock %}
 
 {% block body %}
-{{ include('app/home/navtest.html.twig') }}
-{{ include('app/event/_navmatch.html.twig') }}
+    {{ include('app/home/navtest.html.twig') }}
+    {{ include('app/event/_navmatch.html.twig') }}
     <div class="container-fluid mt-3">
         <div class="row">
             {% for match in matchs %}
@@ -22,7 +22,7 @@
                                     <span class="team-title-left">{{ match.firstTeam }}</span>
                                     <span class="team-score">{{ match.scoreFirstTeam ?? 0 }}</span>
                                     <span> - </span>
-                                    <span class="team-score">{{ match.scoreSecondTeam ?? 0}}</span>
+                                    <span class="team-score">{{ match.scoreSecondTeam ?? 0 }}</span>
                                     <span class="team-title-right">{{ match.secondTeam }}</span>
                                 </h4>
                             </div>

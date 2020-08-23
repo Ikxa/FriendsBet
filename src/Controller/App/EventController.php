@@ -17,12 +17,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class EventController extends AbstractController
 {
-/**
-* @Route("/event/bet", name="event.bet")
-*/
-public function bet() {
-    return new Response('Coucou');
-  }
     /**
      * @var Football
      */
@@ -44,8 +38,8 @@ public function bet() {
     public function index(): Response
     {
         $matchs = $this->getDoctrine()
-            ->getRepository(Match::class)
-            ->findAll();
+                       ->getRepository(Match::class)
+                       ->findAll();
         
         return $this->render(
             'app/event/index.html.twig',
@@ -65,9 +59,9 @@ public function bet() {
         $form = $this->createForm(MatchType::class);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            $match->setIsCustom(true);
+            $match->setIsCustom(TRUE);
             $match->setPlayedAt(new \DateTime());
-            $match->setIsOver(false);
+            $match->setIsOver(FALSE);
             
             $em->persist($match);
             $em->flush();
@@ -81,5 +75,14 @@ public function bet() {
                 'form' => $form->createView(),
             ]
         );
+    }
+    
+    
+    /**
+     * @Route("/event/bet", name="event.bet")
+     */
+    public function bet()
+    {
+        return new Response('Coucou');
     }
 }

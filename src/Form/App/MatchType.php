@@ -86,7 +86,7 @@ class MatchType extends AbstractType
             ->getRepository(Status::class)
             ->findAll();
         $labels = [];
-    
+        
         foreach ($status as $st) {
             $labels[] = $st->getLabel();
         }

@@ -17,22 +17,22 @@
                     </a>
                 </li>
                 {% if not app.user %}
-                <li class="nav-item dropdown mx-0 mx-lg-1">
-                    <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user-alt"></i>
-                    </a>
+                    <li class="nav-item dropdown mx-0 mx-lg-1">
+                        <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded js-scroll-trigger" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-alt"></i>
+                        </a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item dropdown-user" href="{{ path('security.login') }}">Se connecter</a>
-                        <a class="dropdown-item dropdown-user" href="{{ path('security.signup') }}">S'inscrire</a>
-                    </div>
-                </li>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item dropdown-user" href="{{ path('security.login') }}">Se connecter</a>
+                            <a class="dropdown-item dropdown-user" href="{{ path('security.signup') }}">S'inscrire</a>
+                        </div>
+                    </li>
                 {% endif %}
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('user.groups') }}">
-                            {% if app.user %}
-                            {{app.user.username}}
-                            {% endif %}
+                        {% if app.user %}
+                            {{ app.user.username }}
+                        {% endif %}
                         <i class="fas fa-users">
                         </i>
                     </a>
