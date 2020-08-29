@@ -61,8 +61,10 @@
 .event-visu {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+  width: 20px;
+  height: 20px;
   border-radius: 0 !important;
-  background-color: rgb(153, 179, 201);
+  background: url("../../../public/images/logo2.png");
 }
 
 .card-intro .card-body h1 {

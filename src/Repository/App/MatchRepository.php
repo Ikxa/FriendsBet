@@ -18,6 +18,16 @@ class MatchRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Match::class);
     }
+    
+    public function findAllScheduled()
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere("m.status LIKE '%SCHEDULED%'")
+            ->orderBy('m.played_at', 'DESC')
+            ->setMaxResults(100)
+            ->getQuery()
+        ;
+    }
 
     // /**
     //  * @return Match[] Returns an array of Match objects

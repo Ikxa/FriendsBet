@@ -6,6 +6,7 @@ use App\Entity\App\Match;
 use App\Api\Football;
 use App\Form\App\MatchType;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,17 +36,28 @@ class EventController extends AbstractController
     
     /**
      * @Route("/events", name="event.index")
+     * @param PaginatorInterface $paginator
+     *
+     * @param Request            $request
+     *
+     * @return Response
      */
-    public function index(): Response
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
         $matchs = $this->getDoctrine()
-                       ->getRepository(Match::class)
-                       ->findAll();
+            ->getRepository(Match::class)
+            ->findAllScheduled();
+    
+        $matchsPaginated = $paginator->paginate(
+            $matchs, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            20 // Nombre de résultats par page
+        );
         
         return $this->render(
             'app/event/index.html.twig',
             [
-                'matchs' => $matchs,
+                'matchs' => $matchsPaginated,
             ]
         );
     }

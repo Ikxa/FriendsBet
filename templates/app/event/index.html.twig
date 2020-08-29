@@ -16,12 +16,12 @@
             {% for match in matchs %}
                 <div class="col-md-12">
                     <div class="card mb-3">
-                        <div class="event-visu">
+                        <div>
                             <div>
                                 <h4 class="card-title text-center mb-lg-3">
                                     <span class="team-title-left">{{ match.firstTeam }}</span>
                                     <span class="team-score">{{ match.scoreFirstTeam ?? 0 }}</span>
-                                    <span> - </span>
+                                    <div class="event-visu"></div>
                                     <span class="team-score">{{ match.scoreSecondTeam ?? 0 }}</span>
                                     <span class="team-title-right">{{ match.secondTeam }}</span>
                                 </h4>
@@ -38,6 +38,9 @@
                     </div>
                 </div>
             {% endfor %}
+        </div>
+        <div class="row">
+            {{ knp_pagination_render(matchs) }}
         </div>
     </div>
 {% endblock %}
