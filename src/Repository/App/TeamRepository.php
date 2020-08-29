@@ -1,8 +1,14 @@
 <?php
 
+<<<<<<< Updated upstream
 namespace App\Repository\App;
 
 use App\Entity\App\Team;
+=======
+namespace App\Repository;
+
+use App\Entity\Team;
+>>>>>>> Stashed changes
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
