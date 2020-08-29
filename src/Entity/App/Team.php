@@ -1,8 +1,14 @@
 <?php
 
+<<<<<<< Updated upstream
 namespace App\Entity\App;
 
 use App\Repository\App\TeamRepository;
+=======
+namespace App\Entity;
+
+use App\Repository\TeamRepository;
+>>>>>>> Stashed changes
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,15 +24,23 @@ class Team
     private $id;
 
     /**
+<<<<<<< Updated upstream
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
+=======
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private $name;
+    
+>>>>>>> Stashed changes
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $logo;
 
+<<<<<<< Updated upstream
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -43,11 +57,33 @@ class Team
     private $league;
 
     public function getId(): ?int
+=======
+     /**
+      * @ORM\Column(type="string", length=255, nullable=true)
+      */
+    private $stadium;
+
+    /**
+      * @ORM\Column(type="integer", nullable=true)
+      */
+    private $league;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isActive;
+
+    public function getId(): int
+>>>>>>> Stashed changes
     {
         return $this->id;
     }
 
+<<<<<<< Updated upstream
     public function getName(): ?string
+=======
+    public function getName(): string
+>>>>>>> Stashed changes
     {
         return $this->name;
     }
@@ -83,6 +119,7 @@ class Team
         return $this;
     }
 
+<<<<<<< Updated upstream
     public function getIsActive(): ?bool
     {
         return $this->is_active;
@@ -91,10 +128,21 @@ class Team
     public function setIsActive(bool $is_active): self
     {
         $this->is_active = $is_active;
+=======
+    public function getLeague(): ?int
+    {
+        return $this->league;
+    }
+
+    public function setLeague(?int $league): self
+    {
+        $this->league = $league;
+>>>>>>> Stashed changes
 
         return $this;
     }
 
+<<<<<<< Updated upstream
     public function getLeague(): ?int
     {
         return $this->league;
@@ -103,6 +151,16 @@ class Team
     public function setLeague(int $league): self
     {
         $this->league = $league;
+=======
+    public function isActive(): bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+>>>>>>> Stashed changes
 
         return $this;
     }
