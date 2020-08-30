@@ -33,11 +33,6 @@ class Team
     private $stadium;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $is_active;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $league;
@@ -46,70 +41,124 @@ class Team
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $isActive;
-
-    public function getId(): int
+    
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
         return $this->id;
     }
-
-
-    public function getName(): string
+    
+    /**
+     * @param mixed $id
+     *
+     * @return Team
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        
+        return $this;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getName()
     {
         return $this->name;
     }
-
-    public function setName(string $name): self
+    
+    /**
+     * @param mixed $name
+     *
+     * @return Team
+     */
+    public function setName($name)
     {
         $this->name = $name;
-
+        
         return $this;
     }
-
-    public function getLogo(): ?string
+    
+    /**
+     * @return mixed
+     */
+    public function getLogo()
     {
         return $this->logo;
     }
-
-    public function setLogo(?string $logo): self
+    
+    /**
+     * @param mixed $logo
+     *
+     * @return Team
+     */
+    public function setLogo($logo)
     {
         $this->logo = $logo;
-
+        
         return $this;
     }
-
-    public function getStadium(): ?string
+    
+    /**
+     * @return mixed
+     */
+    public function getStadium()
     {
         return $this->stadium;
     }
-
-    public function setStadium(?string $stadium): self
+    
+    /**
+     * @param mixed $stadium
+     *
+     * @return Team
+     */
+    public function setStadium($stadium)
     {
         $this->stadium = $stadium;
-
+        
         return $this;
     }
-
-    public function getLeague(): ?int
+    
+    /**
+     * @return mixed
+     */
+    public function getLeague()
     {
         return $this->league;
     }
-
-    public function setLeague(?int $league): self
+    
+    /**
+     * @param mixed $league
+     *
+     * @return Team
+     */
+    public function setLeague($league)
     {
         $this->league = $league;
-
+        
         return $this;
     }
-
-    public function isActive(): bool
+    
+    /**
+     * @return mixed
+     */
+    public function getIsActive()
     {
         return $this->isActive;
     }
-
-    public function setIsActive(bool $isActive): self
+    
+    /**
+     * @param mixed $isActive
+     *
+     * @return Team
+     */
+    public function setIsActive($isActive)
     {
         $this->isActive = $isActive;
-
+        
         return $this;
     }
 }

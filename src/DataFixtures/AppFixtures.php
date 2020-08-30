@@ -127,7 +127,30 @@ class AppFixtures extends Fixture
         $team22->setLogo("public/images/clubs-logo/Toulouse.png");
         $team22->setLeague(1);
         $team22->setIsActive(true);
-
+    
+        $manager->persist($team1);
+        $manager->persist($team2);
+        $manager->persist($team3);
+        $manager->persist($team4);
+        $manager->persist($team5);
+        $manager->persist($team6);
+        $manager->persist($team7);
+        $manager->persist($team8);
+        $manager->persist($team9);
+        $manager->persist($team10);
+        $manager->persist($team11);
+        $manager->persist($team12);
+        $manager->persist($team13);
+        $manager->persist($team14);
+        $manager->persist($team15);
+        $manager->persist($team16);
+        $manager->persist($team17);
+        $manager->persist($team18);
+        $manager->persist($team19);
+        $manager->persist($team20);
+        $manager->persist($team21);
+        $manager->persist($team22);
+        
         $manager->flush();
     }
 }
