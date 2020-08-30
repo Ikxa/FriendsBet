@@ -23,7 +23,7 @@ class EventController extends AbstractController
     /**
      * @Route("/event/bet", name="event.bet")
      */
-    public function bet()
+    public function bet(): Response
     {
         return new Response('Coucou');
     }
@@ -55,7 +55,6 @@ class EventController extends AbstractController
     {
         $matchs = $this->getDoctrine()
             ->getRepository(Match::class)
-<<<<<<< HEAD
             ->findAllScheduled();
     
         $matchsPaginated = $paginator->paginate(
@@ -64,10 +63,6 @@ class EventController extends AbstractController
             20 // Nombre de résultats par page
         );
         
-=======
-            ->findAll();
-
->>>>>>> f65e13af1056eb6f4119228a053d306d66e54886
         return $this->render(
             'app/event/index.html.twig',
             [
@@ -75,10 +70,12 @@ class EventController extends AbstractController
             ]
         );
     }
-
+    
     /**
      * @Route("/event/add", name="event.add")
      * @param EntityManagerInterface $em
+     *
+     * @return Response
      */
     public function add(EntityManagerInterface $em, Request $request): Response
     {

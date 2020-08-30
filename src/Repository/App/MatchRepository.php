@@ -23,7 +23,7 @@ class MatchRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('m')
             ->andWhere("m.status LIKE '%SCHEDULED%'")
-            ->orderBy('m.played_at', 'DESC')
+            ->orderBy('m.played_at', 'ASC')
             ->setMaxResults(100)
             ->getQuery()
         ;
