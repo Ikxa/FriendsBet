@@ -2,7 +2,6 @@
 
 {% block title %}Les matchs de la semaine{% endblock %}
 
-
 {% trans_default_domain 'messages' %}
 
 {% block body_class %}
@@ -10,31 +9,62 @@
 
 {% block body %}
     {{ include('app/home/navtest.html.twig') }}
-    {{ include('app/event/_navmatch.html.twig') }}
-    <div class="container-fluid mt-3">
-        <div class="row">
-            {% for match in matchs %}
-                <div class="col-sm-12 col-md-6">
-                    <div class="card">
-                        <div class="overlay"></div>
-                        <div class="content">
-                            <h4>{{ match.firstTeam }} {{ match.scoreFirstTeam }} - {{ match.scoreSecondTeam }} {{ match.secondTeam }}</h4>
-                            <h6><button class="btn btn-danger my-2">Parier</button></h6>
+    <div class="container">
+        {% for match in matchs %}
+        <div class="col-12 my-4 py-2">
+            <div class="match">
+                <div class="match-header">
+                    <div class="match-status">A venir !</div>
+                    <div class="match-tournament">Ligue 1</div>
+                    <div class="match-actions">
+                        <button class="btn-icon"><i class="far fa-star"></i></button>
+                        <button class="btn-icon"><i class="far fa-bell"></i></button>
+                    </div>
+                </div>
+                <div class="match-content">
+                    <div class="column">
+                        <div class="team team--home">
+                            <div class="team-logo">
+                                <img src="">
+                            </div>
+                            <h2 class="team-name">{{ match.firstTeam }}</h2>
                         </div>
-                        <div class="status">
-                            {{ match.status|trans }} : {{ match.playedAt|date('d/m/Y') }}
-                            {% if match.isCustom is not null %}
-                                <span class="badge custom">CUSTOM</span>
-                            {% endif %}
+                    </div>
+                    <div class="column">
+                        <div class="match-details">
+                            <div class="match-date">
+                                30 Août à <strong>19:00</strong>
+                            </div>
+                            <div class="match-score">
+                                <span class="match-score-number {{ match.scoreFirstTeam > match.scoreSecondTeam ? "winner" : "" }}">{{ match.scoreFirstTeam }}</span>
+                                <span class="match-score-divider">:</span>
+                                <span class="match-score-number {{ match.scoreSecondTeam > match.scoreFirstTeam ? "winner" : "" }}">{{ match.scoreSecondTeam }}</span>
+                            </div>
+                            <div class="match-time-lapsed">
+                                {# temps écoulé #}
+                            </div>
+                            <div class="match-referee">
+                                Arbitre: <strong>Jordan Renard</strong>
+                            </div>
+                            <div class="match-bet-options">
+                                <button class="match-bet-option">1.48</button>{# bet domicile #}
+                                <button class="match-bet-option">4.98</button>{# bet nul #}
+                                <button class="match-bet-option">8.24</button>{# bet extérieur #}
+                            </div>
+                            <button class="match-bet-place">Parier</button>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="team team--away">
+                            <div class="team-logo">
+                                <img src="" />
+                            </div>
+                            <h2 class="team-name">{{ match.secondTeam }}</h2>
                         </div>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
-        <div class="row">
-            <div class="col-12">
-                {{ knp_pagination_render(matchs) }}
             </div>
-        </div>
+        </div>        
+        {% endfor %}
     </div>
 {% endblock %}

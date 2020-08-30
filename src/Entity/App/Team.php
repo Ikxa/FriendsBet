@@ -26,7 +26,7 @@ class Team
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $logo;
-    
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -38,8 +38,8 @@ class Team
     private $is_active;
 
     /**
-      * @ORM\Column(type="integer", nullable=true)
-      */
+     * @ORM\Column(type="integer", nullable=true)
+     */
     private $league;
 
     /**
@@ -88,7 +88,7 @@ class Team
 
         return $this;
     }
-    
+
     public function getLeague(): ?int
     {
         return $this->league;
@@ -100,7 +100,7 @@ class Team
 
         return $this;
     }
-    
+
     public function isActive(): bool
     {
         return $this->isActive;
