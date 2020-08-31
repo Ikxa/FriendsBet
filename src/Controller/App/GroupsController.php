@@ -32,6 +32,8 @@ class GroupsController extends AbstractController
 
     /**
      * @Route("/groups/index", name="groups.index")
+     * @param Request $request
+     * @return RedirectResponse|Response
      */
     public function index(Request $request)
     {

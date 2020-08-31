@@ -8,64 +8,66 @@
 {% endblock %}
 
 {% block body %}
-    {{ include('app/home/navtest.html.twig') }}
+    {{ include('app/home/navbar.html.twig') }}
     <div class="container">
-        {% for match in matchs %}
-        <div class="col-12 my-4 py-2">
-            <div class="match">
-                <div class="match-header">
-                    <div class="match-status">A venir !</div>
-                    <div class="match-tournament">Ligue 1</div>
-                    <div class="match-actions">
-                        <button class="btn-icon"><i class="far fa-star"></i></button>
-                        <button class="btn-icon"><i class="far fa-bell"></i></button>
-                    </div>
-                </div>
-                <div class="match-content">
-                    <div class="column">
-                        <div class="team team--home">
-                            <div class="team-logo">
-                                <img src="">
-                            </div>
-                            <h2 class="team-name">{{ match.firstTeam }}</h2>
+        {% for match in matchs["api"]["fixtures"] %}
+            <div class="col-12 my-4 py-2">
+                <div class="match">
+                    <div class="match-header">
+                        <div class="match-status">{{ match["status"]|trans }}</div>
+                        <div class="match-tournament"><img src="{{ match["league"]["flag"] }}" alt="Logo"/> {{ match["league"]["name"] }}</div>
+                        <div class="match-actions">
+                            <button class="btn-icon"><i class="far fa-star"></i></button>
+                            <button class="btn-icon"><i class="far fa-bell"></i></button>
                         </div>
                     </div>
-                    <div class="column">
-                        <div class="match-details">
-                            <div class="match-date">
-                                30 Août à <strong>19:00</strong>
+                    <div class="match-content">
+                        <div class="column">
+                            <div class="team team--home">
+                                <div class="team-logo">
+                                    <img src="{{ match["homeTeam"]["logo"] }}" alt="Logo Team1">
+                                </div>
+                                <h2 class="team-name">{{ match["homeTeam"]["team_name"] }}</h2>
                             </div>
-                            <div class="match-score">
-                                <span class="match-score-number {{ match.scoreFirstTeam > match.scoreSecondTeam ? "winner" : "" }}">{{ match.scoreFirstTeam }}</span>
-                                <span class="match-score-divider">:</span>
-                                <span class="match-score-number {{ match.scoreSecondTeam > match.scoreFirstTeam ? "winner" : "" }}">{{ match.scoreSecondTeam }}</span>
-                            </div>
-                            <div class="match-time-lapsed">
-                                {# temps écoulé #}
-                            </div>
-                            <div class="match-referee">
-                                Arbitre: <strong>Jordan Renard</strong>
-                            </div>
-                            <div class="match-bet-options">
-                                <button class="match-bet-option">1.48</button>{# bet domicile #}
-                                <button class="match-bet-option">4.98</button>{# bet nul #}
-                                <button class="match-bet-option">8.24</button>{# bet extérieur #}
-                            </div>
-                            <button class="match-bet-place">Parier</button>
                         </div>
-                    </div>
-                    <div class="column">
-                        <div class="team team--away">
-                            <div class="team-logo">
-                                <img src="" />
+                        <div class="column">
+                            <div class="match-details">
+                                <div class="match-date">
+                                    {{ match["event_date"]|date("d/m/Y") }}
+                                </div>
+                                <div class="match-score">
+                                    <span class="match-score-number">{{ match["score"]["fulltime"] is null ? '0-0' : match["score"]["fulltime"] }}</span>
+                                </div>
+                                <div class="match-time-lapsed">
+                                    {{ match["elapsed"] }}'
+                                </div>
+                                <div class="match-referee">
+                                    Arbitre: <strong>{{ match["referee"] }}</strong>
+                                </div>
+                                <div class="match-bet-options">
+                                    <button class="match-bet-option">1.48</button>
+                                    bet domicile
+                                    <button class="match-bet-option">4.98</button>
+                                    bet nul
+                                    <button class="match-bet-option">8.24</button>
+                                    bet extérieur
+                                </div>
+                                <a class="match-bet-place" href="{{ path('event.bet', {'id': match["fixture_id"]}) }}">Parier</a>
                             </div>
-                            <h2 class="team-name">{{ match.secondTeam }}</h2>
+                        </div>
+                        <div class="column">
+                            <div class="team team--away">
+                                <div class="team-logo">
+                                    <img src="{{ match["awayTeam"]["logo"] }}" alt="Logo team 2" />
+                                </div>
+                                <h2 class="team-name">{{ match["awayTeam"]["team_name"] }}</h2>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>        
         {% endfor %}
     </div>
+
     {{ include('app/home/footer.html.twig') }}
 {% endblock %}

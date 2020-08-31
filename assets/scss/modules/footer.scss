@@ -1,0 +1,50 @@
+// footer global
+.flex-rw-all {
+  color: white;
+  background-color: #28242C;
+  padding: 35px 0 20px 0;
+}
+
+.flex-cols-three {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
+  align-content: center;
+}
+
+.footer-list-header {
+  font-size: 1.2rem;
+}
+
+.footer-list {
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+
+  .footer-list-anchor {
+    font-size: 1rem;
+  }
+}
+
+.footer-social-section {
+  text-align: center;
+}
+
+.footer-bottom-section, .footer-bottom-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
+  align-content: center;
+
+  .footer-bottom-rights, .generic-anchor {
+    padding: 0 10px;
+  }
+}
+
+.footer-list-anchor, .generic-anchor {
+  color: white;
+}

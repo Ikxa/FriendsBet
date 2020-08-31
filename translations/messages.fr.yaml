@@ -1,6 +1,4 @@
 hello.message: "Bonjour %name%"
-CANCELLED: "ANNULÉ"
-SCHEDULED: PROGRAMMÉ
-FINISHED: "TERMINÉ"
-PENDING: "EN COURS"
+'Not Started': "Programmé"
+'Time to be defined': "À venir"
 

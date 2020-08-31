@@ -3,16 +3,11 @@
 {% block title 'Parier sur ce match' %}
 
 {% block body %}
-    {% include 'app/home/navtest.html.twig' %}
+    {% include 'app/home/navbar.html.twig' %}
     <div class="container container-padding">
         <div class="row">
             <div class="col">
-                {{ match.teamOne }} vs {{ match.teamTwo }}
-            </div>
-            <div class="col">
-                {{ form_start(form) }}
-                {{ form_widget(form) }}
-                {{ form_end(form) }}
+                Vous voulez parier sur {{ match[0]["homeTeam"]["team_name"] }} - {{ match[0]["awayTeam"]["team_name"] }}
             </div>
         </div>
     </div>

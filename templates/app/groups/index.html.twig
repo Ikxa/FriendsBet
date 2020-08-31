@@ -3,10 +3,10 @@
 {% block title 'FriendsBet - Votre groupe' %}
 
 {% block body %}
-    {{ include('app/home/navtest.html.twig') }}
+    {{ include('app/home/navbar.html.twig') }}
     <div class="container mt-5">
         <div class="row">
-            <h1 class="text-center group_name">{{ group.name }}</h1>
+            <h1 class="text-center group_name">{{ group.name ?? null }}</h1>
         </div>
         <div class="row d-flex align-content-center align-items-center mt-4">
             <div class="col-3">

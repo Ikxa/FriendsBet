@@ -42,7 +42,7 @@ class HomeController extends AbstractController
         if ($this->getUser()) {
             $twig = 'app/home/index_logged.html.twig';
             $user = $this->getUser();
-            $matchManager->addMatchBetweenDates();
+//            $matchManager->addMatchBetweenDates();
             
             if ($handle = opendir($path[0].DIRECTORY_SEPARATOR.'league')) {
                 while (FALSE !== ($entry = readdir($handle))) {

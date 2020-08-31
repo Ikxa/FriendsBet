@@ -66,12 +66,12 @@ class Football
         return $content;
     }
     
-    public function getTimes()
+    /*public function getTimes()
     {
         return [
             // 'startWeek' => date("Y-m-d", strtotime('monday this week')),
             'startWeek' => date("Y-m-d", strtotime('first day of january this year')),
             'endWeek' => date("Y-m-d", strtotime('last day of december this year')),
         ];
-    }
+    }*/
 }

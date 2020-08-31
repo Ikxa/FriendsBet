@@ -5,6 +5,7 @@ Encore
     .enableSassLoader()
     .addStyleEntry('global', './assets/scss/global.scss')
     .addStyleEntry('login', './assets/scss/modules/login.scss')
+    .addStyleEntry('footer', './assets/scss/modules/footer.scss')
     .addEntry('app', './assets/js/app.js')
     .autoProvidejQuery({
         $: 'jquery',
