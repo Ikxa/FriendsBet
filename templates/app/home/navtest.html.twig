@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light white scrolling-navbar">
     <div class="container">
 
-        <li class="navbar-brand js-scroll-trigger"><a href="{{ path('home.index') }}"><img src="{{ asset('images/logofinal.png') }}" alt="logo" class="img-fluid main-logo"/></li>
+        <li class="navbar-brand js-scroll-trigger"><a href="{{ path('home.index') }}"><img
+                        src="{{ asset('images/logofinal.png') }}" alt="logo" class="img-fluid main-logo"/></li>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +26,8 @@
                 </li>
                 {% if app.user %}
                     <li class="nav-item">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('user.groups') }}">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                           href="{{ path('groups.index') }}">
                             <i class="fas fa-users"></i> Mon groupe
                         </a>
                     </li>
@@ -53,7 +55,8 @@
                 </li>
                 {% if not app.user %}
                     <li class="nav-item dropdown mx-0 mx-lg-1">
-                        <a class="nav-link dropdown-toggle px-0 px-lg-3 rounded js-scroll-trigger" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle px-0 px-lg-3 rounded js-scroll-trigger" role="button"
+                           id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-alt"></i>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -64,13 +67,13 @@
                 {% endif %}
                 {% if app.user %}
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a href="{{ path('user.groups') }}"
-                    class="nav-link border border-light rounded rounded js-scroll-trigger" target="_blank">
-                    <i class="fas fa-user mr-1"></i>
-                    {{ app.user.username }}
-                    {% endif %}
+                    <a href="#"
+                       class="nav-link border border-light rounded rounded js-scroll-trigger" target="_blank">
+                        <i class="fas fa-user mr-1"></i>
+                        {{ app.user.username }}
                     </a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>

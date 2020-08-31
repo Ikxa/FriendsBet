@@ -1,0 +1,262 @@
+<style>
+
+    * {
+        box-sizing: border-box
+    }
+    html, body {
+        height: 100%
+    }
+    body {
+        font: 11px "Open Sans", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        margin: auto;
+        display: flex;
+        flex-flow: column nowrap;
+
+        justify-content: space-between
+    }
+
+    ul {
+        list-style: none
+    }
+    a {
+        text-decoration: none
+    }
+    .generic-anchor {
+        color: lightskyblue;
+    &:visited {
+         color: lightskyblue;
+     }
+    &:hover {
+         color: grey;
+     }
+    }
+    .flex-rw {
+        display: flex;
+        flex-flow: row wrap;
+    }
+    main {
+        flex: 1 1 auto; //For IE11
+    display: flex;
+        align-items: center;
+        justify-content: center;
+        font: 10em "Oswald", sans-serif;
+        color: rgb(155,155,155);
+        line-height: 1
+    }
+    footer {
+        background: rgb(55,55,55);
+        margin-top: auto;
+        width: 100%
+    }
+    .footer-list-top {
+        width: 33.333%
+    }
+    .footer-list-top > li {
+        text-align: center;
+        padding-bottom: 10px
+    }
+    .footer-list-header {
+        padding: 10px 0 5px 0;
+        color: #fff;
+        font: 2.3vw "Oswald", sans-serif
+    }
+    .footer-list-anchor {
+        font: 1.3em "Open Sans", sans-serif
+    }
+    .footer-social-section {
+        width: 100%;
+        align-items: center;
+        justify-content: space-around;
+        position: relative;
+        margin-top: 5px;
+    }
+    .footer-social-section::after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 10px;
+        border-top: 1px solid grey;
+        width: calc(100% - 20px)
+    }
+    .footer-social-overlap {
+        position: relative;
+        z-index: 2;
+        background: rgb(55,55,55);
+        padding: 0 20px
+    }
+    .footer-social-connect {
+        display: flex;
+        align-items: center;
+        font: 3.5em "Oswald", sans-serif;
+        color: #fff
+    }
+    .footer-social-small {
+        font-size: 0.6em;
+        padding: 0px 20px
+    }
+    .footer-social-overlap > a {
+        font-size: 3em
+    }
+    .footer-social-overlap > a:not(:first-child) {
+        margin-left: 0.38em
+    }
+    .footer-bottom-section {
+        width: 100%;
+        padding: 10px;
+        border-top: 1px solid grey;
+        margin-top: 10px
+    }
+    .footer-bottom-section > div:first-child {
+        margin-right: auto
+    }
+    .footer-bottom-wrapper {
+        font-size: 1.5em;
+        color: #fff
+    }
+    .footer-address {
+        display: inline;
+        font-style: normal
+    }
+    @media only screen and (max-width: 768px) {
+        .footer-list-header {
+            font-size: 2em
+        }
+        .footer-list-anchor {
+            font-size: 1.1em
+        }
+        .footer-social-connect {
+            font-size: 2.5em
+        }
+        .footer-social-overlap > a {
+            font-size: 2.24em
+        }
+        .footer-bottom-wrapper {
+            font-size: 1.3em
+        }
+    }
+    @media only screen and (max-width: 568px) {
+        main {
+            font-size: 5em
+        }
+        .footer-list-top {
+            width: 100%
+        }
+        .footer-list-header {
+            font-size: 3em;
+        }
+        .footer-list-anchor {
+            font-size: 1.5em
+        }
+        .footer-social-section {
+            justify-content: center
+        }
+        .footer-social-section::after {
+            top: 25%
+        }
+        .footer-social-connect {
+            margin-bottom: 10px;
+            padding: 0 10px
+        }
+        .footer-social-overlap {
+            display: flex;
+            justify-content: center;
+        }
+        .footer-social-icons-wrapper {
+            width: 100%;
+            padding: 0
+        }
+        .footer-social-overlap > a:not(:first-child) {
+            margin-left: 20px;
+        }
+        .footer-bottom-section {
+            padding: 0 5px 10px 5px
+        }
+        .footer-bottom-wrapper {
+            text-align: center;
+            width: 100%;
+            margin-top: 10px
+        }
+    }
+    @media only screen and (max-width: 480px) {
+        .footer-social-overlap > a {
+            margin: auto
+        }
+        .footer-social-overlap > a:not(:first-child) {
+            margin-left: 0;
+        }
+        .footer-bottom-rights {
+            display: block
+        }
+    }
+    @media only screen and (max-width: 320px) {
+        .footer-list-header {
+            font-size: 2.2em
+        }
+        .footer-list-anchor {
+            font-size: 1.2em
+        }
+        .footer-social-connect {
+            font-size: 2.4em
+        }
+        .footer-social-overlap > a {
+            font-size: 2.24em
+        }
+        .footer-bottom-wrapper {
+            font-size: 1.3em
+        }
+    }
+
+</style>
+
+<footer class="flex-rw">
+
+    <ul class="footer-list-top">
+        <li>
+            <h4 class="footer-list-header">A propos de FriendsBet</h4></li>
+        <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Découvrez l'équipe</a></li>
+        <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">L'histoire du site</a></li>
+        <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Participer au développement</a></li>
+
+        <li><a href='#' itemprop="significantLink" class="generic-anchor footer-list-anchor">Nous rejoindre</a></li>
+
+        <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Niquer des mères</a></li>
+    </ul>
+    <ul class="footer-list-top">
+        <li>
+            <h4 class="footer-list-header">Améliorer ses paris</h4></li>
+
+
+        <li><a href='#' class="generic-anchor footer-list-anchor">Fonctionnement du site</a></li>
+        <li><a href='#' class="generic-anchor footer-list-anchor">L'équipe 21</a></li>
+        <li><a href='#' class="generic-anchor footer-list-anchor">Test</a></li>
+        <li><a href='#' class="generic-anchor footer-list-anchor">Test</a></li>
+        <li><a href='#' class="generic-anchor footer-list-anchor" target="_blank">Test</a></li>
+    </ul>
+    <ul class="footer-list-top">
+        <li id='help'>
+            <h4 class="footer-list-header">ALED</h4></li>
+        <li><a href="{{ path('home.contact') }}" class="generic-anchor footer-list-anchor" itemprop="significantLink">Nous contacter</a></li>
+        <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
+        <li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">TEst</a></li>
+        <li id='user-registration'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Test</a></li>
+        <li id='order-tracking'><a href='#' itemprop="significantLink" class="generic-anchor footer-list-anchor">Test</a></li>
+    </ul>
+    <section class="footer-social-section flex-rw">
+      <span class="footer-social-overlap footer-social-connect">
+      JOUEZ <span class="footer-social-small">avec</span> VOS AMIS
+      </span>
+    </section>
+    <section class="footer-bottom-section flex-rw">
+        <div class="footer-bottom-wrapper">
+            <i class="fa fa-copyright" role="copyright">
+
+            </i> 2020 Vilette/Renard <address class="footer-address" role="company address">DTC</address><span class="footer-bottom-rights"> - Tous droits réservés - </span>
+        </div>
+        <div class="footer-bottom-wrapper">
+            <a href="/terms-of-use.html" class="generic-anchor" rel="nofollow">Réglement</a> | <a href="/privacy-policy.html" class="generic-anchor" rel="nofollow">Vie privé</a>
+        </div>
+    </section>
+</footer>
