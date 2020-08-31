@@ -30,8 +30,8 @@ class Football
     public function __construct(HttpClientInterface $client)
     {
         $this->client = $client;
-        $this->token = '0dfdac559a71453f8594aa357401e3cd';
-        $this->headers = ['headers' => ['X-Auth-Token' => $this->token]];
+        $this->token = 'b7e7d690b6msh100e659f7617f84p160d2djsne1e1f6d50991';
+        $this->headers = ['headers' => ['X-RapidAPI-Key' => $this->token]];
     }
     
     /**

@@ -51,12 +51,18 @@ class EventController extends AbstractController
      *
      * @return Response
      */
-    public function index(PaginatorInterface $paginator, Request $request): Response
+    public function index(PaginatorInterface $paginator, Request $request, Football $api): Response
     {
         $matchs = $this->getDoctrine()
             ->getRepository(Match::class)
             ->findAllScheduled();
-    
+        /*
+         *
+        $url = "https://api-football-v1.p.rapidapi.com/v2/teams";
+        $response = $api->sendRequest('GET', $url);
+        dd($response);
+        */
+
         $matchsPaginated = $paginator->paginate(
             $matchs, // Requête contenant les données à paginer (ici nos articles)
             $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
