@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}FriendsBets - Pariez sur vos matchs préférés entre amis !
+{% block title %}FriendsBets - Pariez sur vos matchs préférés entre amis !{% endblock %}
+
+{% block body_class %}
+    class="flex-body"
 {% endblock %}
 
 {% block body %}
@@ -66,19 +69,6 @@
             width: 80px;
         }
 
-        .icon_wrapper {
-            margin: 50px auto 0;
-            width: 100%;
-        }
-
-        .icon {
-            display: block;
-            fill: #474544;
-            height: 50px;
-            margin: 0 auto;
-            width: 50px;
-        }
-
         .email {
             float: right;
             width: 45%;
@@ -92,18 +82,15 @@
             font-size: 1.000em;
             font-weight: 400;
             letter-spacing: 1px;
-            margin: 0em 0 1.875em 0;
+            margin: 0 0 1.875em 0;
             padding: 0 0 0.875em 0;
             text-transform: uppercase;
             width: 100%;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
-            -ms-box-sizing: border-box;
-            -o-box-sizing: border-box;
             box-sizing: border-box;
             -webkit-transition: all 0.3s;
             -moz-transition: all 0.3s;
-            -ms-transition: all 0.3s;
             -o-transition: all 0.3s;
             transition: all 0.3s;
         }
@@ -180,7 +167,6 @@
             text-transform: uppercase;
             -webkit-transition: all 0.3s;
             -moz-transition: all 0.3s;
-            -ms-transition: all 0.3s;
             -o-transition: all 0.3s;
             transition: all 0.3s;
         }
@@ -216,11 +202,6 @@
                 font-size: 18px;
             }
 
-            .icon {
-                height: 35px;
-                width: 35px;
-            }
-
             .underline {
                 width: 53px;
             }
@@ -232,26 +213,26 @@
 
     </style>
 
-    <div id="container">
+    <div id="container flex-container">
         <h1>&bull; Comment ça un problème ? &bull;</h1>
         <div class="underline">
         </div>
         <form action="#" method="post" id="contact_form">
             <div class="name">
                 <label for="name"></label>
-                <input type="text" placeholder="Mon pseudo est" name="name" id="name_input" required>
+                <input type="text" placeholder="Mon pseudo est" name="name" id="name" required>
             </div>
             <div class="email">
                 <label for="email"></label>
-                <input type="email" placeholder="Mon adresse mail est" name="email" id="email_input" required>
+                <input type="email" placeholder="Mon adresse mail est" name="email" id="email" required>
             </div>
             <div class="telephone">
-                <label for="name"></label>
-                <input type="text" placeholder="Mon numéro est" name="telephone" id="telephone_input" required>
+                <label for="telephone"></label>
+                <input type="text" placeholder="Mon numéro est" name="telephone" id="telephone" required>
             </div>
             <div class="subject">
                 <label for="subject"></label>
-                <select placeholder="Subject line" name="subject" id="subject_input" required>
+                <select name="subject" id="subject" required>
                     <option disabled hidden selected>Mon problème</option>
                     <option>J'aimerais signaler un bug</option>
                     <option>J'aimerais signaler un loupé dans les matchs</option>
@@ -260,7 +241,7 @@
             </div>
             <div class="message">
                 <label for="message"></label>
-                <textarea name="message" placeholder="Racontez moi tout" id="message_input" cols="30" rows="5" required></textarea>
+                <textarea name="message" placeholder="Racontez moi tout" id="message" cols="30" rows="5" required></textarea>
             </div>
             <div class="submit">
                 <input type="submit" value="Send Message" id="form_button" />

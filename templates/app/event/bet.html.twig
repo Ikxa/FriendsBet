@@ -2,9 +2,13 @@
 
 {% block title 'Parier sur ce match' %}
 
+{% block body_class %}
+    class="flex-body"
+{% endblock %}
+
 {% block body %}
-    {% include 'app/home/navbar.html.twig' %}
-    <div class="container container-padding">
+    {{ include('app/home/navbar.html.twig') }}
+    <div class="container flex-container">
         <div class="row">
             <div class="col">
                 Vous voulez parier sur {{ match[0]["homeTeam"]["team_name"] }} - {{ match[0]["awayTeam"]["team_name"] }}

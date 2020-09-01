@@ -4,6 +4,10 @@
 
 {% trans_default_domain 'messages' %}
 
+{% block body_class %}
+    class="flex-body"
+{% endblock %}
+
 {% block body %}
     {{ include('app/home/navbar.html.twig') }}
 
@@ -14,7 +18,7 @@
                 <p class="">Créer un match et envoyer le lien à vos amis pour recevoir leurs paris.</p>
             </div>
             <div class="d-none d-sm-none d-md-block">
-                <img class="img-fluid" src="{{ asset('images/ballon.png') }}">
+                <img class="img-fluid" src="{{ asset('images/ballon.png') }}" alt="Ballon">
             </div>
         </div>
         <div class="row">
@@ -25,14 +29,14 @@
         </div>
     </header>
 
-    <div class="container container-marged">
+    <div class="container container-marged flex-container">
         <div class="row d-flex justify-content-around align-items-center">
             <div class="col">
                 <p>Commencer à parier dès maintenant sur vos matchs préférés !</p>
                 <p>Allez voir les matchs de la semaine, lâchez vos meilleurs résultats et vous recevrez un mail récapitulatif quand le match sera terminé.</p>
             </div>
             <div class="col">
-                <img class="img-fluid" src="{{ asset('images/bet.png') }}">
+                <img class="img-fluid" src="{{ asset('images/bet.png') }}" alt="Paris" />
             </div>
         </div>
     </div>

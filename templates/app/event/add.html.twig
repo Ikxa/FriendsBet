@@ -2,9 +2,13 @@
 
 {% block title %}Ajouter un match{% endblock %}
 
+{% block body_class %}
+    class="flex-body"
+{% endblock %}
+
 {% block body %}
     {{ include('app/home/navbar.html.twig') }}
-    <div class="container">
+    <div class="container flex-container">
         <div class="row">
             {{ form_start(form) }}
             {{ form_widget(form) }}

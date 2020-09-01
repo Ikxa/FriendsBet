@@ -4,8 +4,14 @@
 
 {% trans_default_domain 'messages' %}
 
+{% block body_class %}
+    class="flex-body"
+{% endblock %}
 
 {% block body %}
     {{ include('app/home/navbar.html.twig') }}
+    <div class="container flex-container">
+
+    </div>
     {{ include('app/home/footer.html.twig') }}
 {% endblock %}

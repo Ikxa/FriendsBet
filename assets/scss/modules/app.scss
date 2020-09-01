@@ -99,3 +99,13 @@
   align-content: center;
   font-style: italic;
 }
+
+.flex-body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.flex-container {
+  flex: 1;
+}
