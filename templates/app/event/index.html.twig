@@ -16,7 +16,8 @@
                 <div class="match">
                     <div class="match-header">
                         <div class="match-status">{{ match["status"]|trans }}</div>
-                        <div class="match-tournament"><img src="{{ match["league"]["flag"] }}" alt="Logo"/> {{ match["league"]["name"] }}</div>
+                        <div class="match-tournament"><img src="{{ match["league"]["flag"] }}"
+                                                           alt="Logo"/> {{ match["league"]["name"] }}</div>
                         <div class="match-actions">
                             <button class="btn-icon"><i class="far fa-star"></i></button>
                             <button class="btn-icon"><i class="far fa-bell"></i></button>
@@ -47,11 +48,11 @@
                                 </div>
                                 <div class="match-bet-options">
                                     <button class="match-bet-option">1.48</button>
-                                    bet domicile
+                                    {# bet domicile #}
                                     <button class="match-bet-option">4.98</button>
-                                    bet nul
+                                    {# bet nul #}
                                     <button class="match-bet-option">8.24</button>
-                                    bet extérieur
+                                    {# bet extérieur #}
                                 </div>
                                 <a class="match-bet-place" href="{{ path('event.bet', {'id': match["fixture_id"]}) }}">Parier</a>
                             </div>
@@ -59,7 +60,7 @@
                         <div class="column">
                             <div class="team team--away">
                                 <div class="team-logo">
-                                    <img src="{{ match["awayTeam"]["logo"] }}" alt="Logo team 2" />
+                                    <img src="{{ match["awayTeam"]["logo"] }}" alt="Logo team 2"/>
                                 </div>
                                 <h2 class="team-name">{{ match["awayTeam"]["team_name"] }}</h2>
                             </div>

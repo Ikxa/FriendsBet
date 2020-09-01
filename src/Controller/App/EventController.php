@@ -4,6 +4,7 @@ namespace App\Controller\App;
 
 use App\Entity\App\Match;
 use App\Api\Football;
+use App\Entity\App\Sport;
 use App\Form\App\MatchType;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
@@ -48,10 +49,19 @@ class EventController extends AbstractController
      *
      * @return Response
      */
-    public function index(PaginatorInterface $paginator, Request $request): Response
+    public function index(): Response
     {
         $matchsUrl = 'https://api-football-v1.p.rapidapi.com/v2/fixtures/league/2664/next/50?timezone=Europe/Paris';
         $matchs = $this->api->sendRequest('GET', $matchsUrl);
+
+        /*foreach ($matchs["api"]["fixtures"] as $match) {
+            $oddsUrl = 'https://api-football-v1.p.rapidapi.com/v2/predictions/' . $match["fixture_id"];
+            $odds = $this->api->sendRequest('GET', $oddsUrl);
+            $match["odds"][] = $odds;
+        }
+
+        dump($matchs);
+        die;*/
 
         return $this->render(
             'app/event/index.html.twig',
@@ -96,7 +106,9 @@ class EventController extends AbstractController
 
     /**
      * @Route("/event/bet/{id}", name="event.bet")
+     *
      * @param int $id
+     * @param EntityManagerInterface $entityManager
      *
      * @throws ClientExceptionInterface
      * @throws DecodingExceptionInterface
@@ -106,12 +118,27 @@ class EventController extends AbstractController
      *
      * @return Response
      */
-    public function bet(int $id): Response
+    public function bet(int $id, EntityManagerInterface $entityManager): Response
     {
-        dump($id);
-
         $matchSelectedUrl = 'https://api-football-v1.p.rapidapi.com/v2/fixtures/id/'.$id.'?timezone=Europe/Paris';
         $match = $this->api->sendRequest('GET', $matchSelectedUrl);
+
+        $matchSaved = new Match();
+        $matchSaved->setSport($this->getDoctrine()->getRepository(Sport::class)->findOneBy(['id' => 1]));
+        $matchSaved->setFirstTeam($match["api"]["fixtures"][0]["homeTeam"]["team_name"]);
+        $matchSaved->setSecondTeam($match["api"]["fixtures"][0]["awayTeam"]["team_name"]);
+        $matchSaved->setScoreFirstTeam($match["api"]["fixtures"][0]["goalsHomeTeam"] ?? 0);
+        $matchSaved->setScoreSecondTeam($match["api"]["fixtures"][0]["goalsAwayTeam"] ?? 0);
+        $playedAt = date('d/m/Y H:i:s', $match["api"]["fixtures"][0]["event_timestamp"]);
+        $matchSaved->setPlayedAt(new \DateTime($playedAt));
+        $matchSaved->setIsOver(false);
+        $matchSaved->setStatus($match["api"]["fixtures"][0]["status"]);
+        $matchSaved->setWinner($match["api"]["fixtures"][0]["statusShort"]);
+        $matchSaved->setMatchId($match["api"]["fixtures"][0]["fixture_id"]);
+        $matchSaved->setIsCustom(false);
+
+        $entityManager->persist($matchSaved);
+        $entityManager->flush();
 
         return $this->render(
             'app/event/bet.html.twig',
