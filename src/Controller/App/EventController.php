@@ -160,6 +160,7 @@ class EventController extends AbstractController
             {
                 $bet->setMatchToBet(isset($matchSaved) ? $matchSaved : $existingMatch);
                 $bet->addUser($this->getUser());
+                // todo: Mettre le group et filtre la requête SQL sur les groupes
 
                 $entityManager->persist($bet);
                 $entityManager->flush();

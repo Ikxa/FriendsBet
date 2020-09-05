@@ -50,10 +50,16 @@ class Group
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="group_defined")
      */
     private $users;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Bet::class, mappedBy="user_group")
+     */
+    private $bets;
     
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->bets = new ArrayCollection();
     }
     
     public function getId(): ?int
@@ -149,6 +155,37 @@ class Group
             }
         }
         
+        return $this;
+    }
+
+    /**
+     * @return Collection|Bet[]
+     */
+    public function getBets(): Collection
+    {
+        return $this->bets;
+    }
+
+    public function addBet(Bet $bet): self
+    {
+        if (!$this->bets->contains($bet)) {
+            $this->bets[] = $bet;
+            $bet->setUserGroup($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBet(Bet $bet): self
+    {
+        if ($this->bets->contains($bet)) {
+            $this->bets->removeElement($bet);
+            // set the owning side to null (unless already changed)
+            if ($bet->getUserGroup() === $this) {
+                $bet->setUserGroup(null);
+            }
+        }
+
         return $this;
     }
 }

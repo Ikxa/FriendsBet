@@ -40,6 +40,11 @@ class Bet
      */
     private $matchToBet;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="bets")
+     */
+    private $user_group;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
@@ -108,6 +113,18 @@ class Bet
     public function setMatchToBet(?MatchToBet $matchToBet): self
     {
         $this->matchToBet = $matchToBet;
+
+        return $this;
+    }
+
+    public function getUserGroup(): ?Group
+    {
+        return $this->user_group;
+    }
+
+    public function setUserGroup(?Group $user_group): self
+    {
+        $this->user_group = $user_group;
 
         return $this;
     }
