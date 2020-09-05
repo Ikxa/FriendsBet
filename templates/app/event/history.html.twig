@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Équipe 1</th>
+                    <th>Équipe 2</th>
+                    <th>Score parié</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for bets in betsWithMatch %}
+                    <tr>
+                        <td>{{ bets.first_team }}</td>
+                        <td>{{ bets.second_team }}</td>
+                        <td>{{ bets[0].scoreFirstTeam }} - {{ bets[0].scoreSecondTeam }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

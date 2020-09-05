@@ -2,7 +2,7 @@
 
 namespace App\Form\App;
 
-use App\Entity\App\Match;
+use App\Entity\App\MatchToBet;
 use App\Entity\App\Status;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\AbstractType;
@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class MatchType extends AbstractType
+class MatchToBetType extends AbstractType
 {
     /**
      * @var EntityManagerInterface
@@ -60,7 +60,7 @@ class MatchType extends AbstractType
                 [
                     'label' => 'Status du match',
                     'choices' => $this->getStatus(),
-                    'choice_label' => function ($choice, $key, $value) {
+                    'choice_label' => function ($value) {
                         return strtoupper($value);
                     },
                 ]
@@ -83,7 +83,7 @@ class MatchType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'data_class' => Match::class,
+                'data_class' => MatchToBet::class,
             ]
         );
     }

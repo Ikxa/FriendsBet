@@ -5,9 +5,8 @@ namespace App\Service;
 
 
 use App\Api\Football;
-use App\Entity\App\Match;
+use App\Entity\App\MatchToBet;
 use App\Entity\App\Sport;
-use App\Entity\Security\Warm;
 use Doctrine\ORM\EntityManagerInterface;
 
 class MatchManager
@@ -34,14 +33,14 @@ class MatchManager
         $this->entityManager = $em;
     }
     
-    public function verifyWarm(array $times)
+    /*public function verifyWarm(array $times)
     {
         $warmRepository = $this->entityManager->getRepository(Warm::class);
         
         return $warmRepository->findOneBy(['start_date' => new \DateTime($times['startWeek']), 'end_date' => new \DateTime($times['endWeek'])]);
-    }
+    }*/
     
-    public function addMatchBetweenDates(): bool
+    /*public function addMatchBetweenDates(): bool
     {
         // Récupérons les matchs
         $times = $this->api->getTimes();
@@ -54,7 +53,7 @@ class MatchManager
             
             // Ajoutons les matchs récupérés
             foreach ($content["matches"] as $match) {
-                $matchToSave = new Match();
+                $matchToSave = new MatchToBet();
                 $sport = $this->entityManager->getRepository(Sport::class)->findOneBy(['label' => 'Football']);
                 $matchToSave->setFirstTeam($match['homeTeam']['name']);
                 $matchToSave->setSecondTeam($match['awayTeam']['name']);
@@ -79,13 +78,5 @@ class MatchManager
         }
         
         return FALSE;
-    }
-    
-    // TODO :
-    
-    /**
-     * Quand les dates renvoyés sont différentes de celles en base de données, faire la différence, l'intervalle entre les dates
-     * Et ajouter les matchs manquants
-     * Dans les matchs rajouter un champs league pour savoir si c'est ligue 1 etc ...
-     */
+    }*/
 }

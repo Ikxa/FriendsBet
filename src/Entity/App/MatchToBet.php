@@ -2,14 +2,16 @@
 
 namespace App\Entity\App;
 
-use App\Repository\App\MatchRepository;
+use App\Repository\App\MatchToBetRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=MatchRepository::class)
- * @ORM\Table(name="`match`")
+ * @ORM\Entity(repositoryClass=MatchToBetRepository::class)
+ * @ORM\Table(name="`matchToBet`")
  */
-class Match
+class MatchToBet
 {
     /**
      * @ORM\Id()
@@ -72,6 +74,16 @@ class Match
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $is_custom;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Bet::class, mappedBy="matchToBet")
+     */
+    private $bets;
+
+    public function __construct()
+    {
+        $this->bets = new ArrayCollection();
+    }
     
     public function getId(): ?int
     {
@@ -173,7 +185,7 @@ class Match
     /**
      * @param mixed $winner
      *
-     * @return Match
+     * @return self
      */
     public function setWinner($winner)
     {
@@ -215,6 +227,37 @@ class Match
     {
         $this->is_custom = $is_custom;
         
+        return $this;
+    }
+
+    /**
+     * @return Collection|Bet[]
+     */
+    public function getBets(): Collection
+    {
+        return $this->bets;
+    }
+
+    public function addBet(Bet $bet): self
+    {
+        if (!$this->bets->contains($bet)) {
+            $this->bets[] = $bet;
+            $bet->setMatchToBet($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBet(Bet $bet): self
+    {
+        if ($this->bets->contains($bet)) {
+            $this->bets->removeElement($bet);
+            // set the owning side to null (unless already changed)
+            if ($bet->getMatchToBet() === $this) {
+                $bet->setMatchToBet(null);
+            }
+        }
+
         return $this;
     }
 }

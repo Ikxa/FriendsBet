@@ -2,9 +2,8 @@
 
 namespace App\Controller\App;
 
+use App\Entity\App\Bet;
 use App\Entity\App\Group;
-use App\Entity\App\Match;
-use App\Api\Football;
 use App\Entity\Security\User;
 use App\Form\App\GroupType;
 use App\Service\GroupBuilder;
@@ -147,6 +146,21 @@ class GroupsController extends AbstractController
 
         return $this->render('app/groups/stats.html.twig', [
             'group' => $group,
+        ]);
+    }
+
+    /**
+     * @Route("/groups/history", name="groups.history")
+     */
+    public function history()
+    {
+        // todo : Récupérer les différents paris, les matchs pariés pour avoir le status
+        $betsWithMatch = $this->getDoctrine()
+            ->getRepository(Bet::class)
+            ->findAllBetsWithMatchsByUser();
+
+        return $this->render('app/event/history.html.twig', [
+            'betsWithMatch' => $betsWithMatch,
         ]);
     }
 

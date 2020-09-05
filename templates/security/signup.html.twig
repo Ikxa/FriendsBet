@@ -4,11 +4,13 @@
 
 {% block body %}
     <div class="container">
-        <div class="row py-5 mt-4 align-items-center">
+        <div class="row py-5 mt-4 d-flex align-items-center justify-content-around align-content-center">
             <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
-                <img src="{{ asset('images/signup.svg') }}" alt="" class="img-fluid mb-3 d-none d-md-block">
+                <img src="{{ asset('images/animation_home.gif') }}" alt="signup"
+                     class="img-fluid mb-3 d-none d-md-block signup-gif">
                 <h1>Création d'un compte</h1>
-                <p class="font-italic text-muted mb-0">Créez un compte afin de commencer vos meilleurs paris en ligne.</p>
+                <p class="font-italic text-muted mb-0">Créez un compte afin de commencer vos meilleurs paris en
+                    ligne.</p>
             </div>
 
             <div class="col-md-7 col-lg-6 ml-auto">
@@ -40,14 +42,12 @@
                     <div class="border-bottom w-100 mr-5"></div>
                 </div>
                 <div class="text-center w-100">
-                    <p class="text-muted font-weight-bold">Déjà inscrit? <a href="{{ path('security.login') }}" class="text-primary ml-2">Connexion</a></p>
+                    <p class="text-muted font-weight-bold">Déjà inscrit? <a href="{{ path('security.login') }}"
+                                                                            class="text-primary ml-2">Connexion</a></p>
                 </div>
             </div>
-            </form>
         </div>
     </div>
-    </div>
-
 {% endblock %}
 
 

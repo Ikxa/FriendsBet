@@ -11,6 +11,16 @@
     <div class="container flex-container">
         <div class="row">
             <div class="col">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <div class="form-group">
+                    <input type="submit" value="Parier" class="btn btn-success float-right my-3">
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
                 Vous voulez parier sur {{ match[0]["homeTeam"]["team_name"] }} - {{ match[0]["awayTeam"]["team_name"] }}
             </div>
         </div>

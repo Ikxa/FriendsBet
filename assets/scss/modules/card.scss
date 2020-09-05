@@ -1,11 +1,5 @@
 // @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 
-*,
-*:after,
-*:before {
-	box-sizing: border-box;
-}
-
 :root {
 	--color-text-primary: #1c2a38;
 	--color-text-secondary: #8a8f98;
@@ -17,19 +11,8 @@
 	--color-theme-primary: #623ce6;
 }
 
-/*img {
-	display: block;
-}*/
-
 strong {
 	font-weight: 600;
-}
-
-body {
-	font-family: "Inter", sans-serif;
-	// line-height: 1.5;
-	color: var(--color-text-primary);
-	background-color: var(--color-bg-secondary);
 }
 
 .match {

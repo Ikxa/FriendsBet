@@ -30,7 +30,7 @@ class Sport
     private $is_active;
     
     /**
-     * @ORM\OneToMany(targetEntity=Match::class, mappedBy="sport")
+     * @ORM\OneToMany(targetEntity=MatchToBet::class, mappedBy="sport")
      */
     private $matches;
     
@@ -69,14 +69,14 @@ class Sport
     }
     
     /**
-     * @return Collection|Match[]
+     * @return Collection|MatchToBet[]
      */
     public function getMatches(): Collection
     {
         return $this->matches;
     }
     
-    public function addMatch(Match $match): self
+    public function addMatch(MatchToBet $match): self
     {
         if (!$this->matches->contains($match)) {
             $this->matches[] = $match;
@@ -86,7 +86,7 @@ class Sport
         return $this;
     }
     
-    public function removeMatch(Match $match): self
+    public function removeMatch(MatchToBet $match): self
     {
         if ($this->matches->contains($match)) {
             $this->matches->removeElement($match);
