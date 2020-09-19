@@ -7,6 +7,7 @@ Encore
     .addStyleEntry('login', './assets/scss/modules/login.scss')
     .addStyleEntry('footer', './assets/scss/modules/footer.scss')
     .addEntry('app', './assets/js/app.js')
+    .addEntry('darkbutton', './assets/js/darkbutton.js')
     .autoProvidejQuery({
         $: 'jquery',
         jQuery: 'jquery',
