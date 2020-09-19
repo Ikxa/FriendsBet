@@ -3,7 +3,7 @@
 }
 
 .container-colored {
-  background-color: $mainColor;
+  background-color: var(--containermain);
   padding: 50px 0 100px 0;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .navbar .nav-link {
-  color: #444343 !important;
+  color: var(--heading-color) !important;
 }
 
 .navbar .button-collapse {

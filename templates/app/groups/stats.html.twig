@@ -5,128 +5,211 @@
 {% block body %}
     {{ include('app/home/navbar.html.twig') }}
 
-<div class="ptable">
-    <h1 class="headin">Standings</h1>
-    <table>
-        <tr class="col">
-            <th>#</th>
-            <th>Team</th>
-            <th>GP</th>
-            <th>W</th>
-            <th>D</th>
-            <th>L</th>
-            <th>GD</th>
-            <th>PTS</th>
-        </tr>
-        <tr class="wpos">
-            <td>1</td>
-            <td>Warriors FC</td>
-            <td>2</td>
-            <td>2</td>
-            <td>0</td>
-            <td>0</td>
-            <td>5</td>
-            <td>6</td>
-        </tr>
-        <tr class="wpos">
-            <td>2</td>
-            <td>YOLO FC</td>
-            <td>2</td>
-            <td>2</td>
-            <td>0</td>
-            <td>0</td>
-            <td>4</td>
-            <td>6</td>
-        </tr>
-        <tr class="wpos">
-            <td>3</td>
-            <td>Majestic A</td>
-            <td>2</td>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>4</td>
-            <td>4</td>
-        </tr>
-        <tr class="wpos">
-            <td>4</td>
-            <td>Fenris</td>
-            <td>2</td>
-            <td>1</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>4</td>
-        </tr>
-        <tr class="pos">
-            <td>5</td>
-            <td>La Masia</td>
-            <td>2</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>3</td>
-        </tr>
-        <tr class="pos">
-            <td>6</td>
-            <td>Ultra Sort FC</td>
-            <td>3</td>
-            <td>1</td>
-            <td>0</td>
-            <td>2</td>
-            <td>-1</td>
-            <td>3</td>
-        </tr>
-        <tr class="pos">
-            <td>7</td>
-            <td>Wasseypur FC</td>
-            <td>2</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>-2</td>
-            <td>3</td>
-        </tr>
-        <tr class="pos">
-            <td>8</td>
-            <td>Majestic B</td>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-        </tr>
-        <tr class="pos">
-            <td>9</td>
-            <td>Not So Hot Spurs</td>
-            <td>2</td>
-            <td>0</td>
-            <td>1</td>
-            <td>1</td>
-            <td>-1</td>
-            <td>1</td>
-        </tr>
-        <tr class="pos">
-            <td>10</td>
-            <td>Silver Hawks</td>
-            <td>2</td>
-            <td>0</td>
-            <td>0</td>
-            <td>2</td>
-            <td>-4</td>
-            <td>0</td>
-        </tr>
-        <tr class="pos">
-            <td>11</td>
-            <td>Barely Legal FC</td>
-            <td>2</td>
-            <td>0</td>
-            <td>0</td>
-            <td>2</td>
-            <td>-5</td>
-            <td>0</td>
-        </tr>
-    </table>
-</div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <h1 class="text-center group_name">{{ group.name ?? null }}</h1>
+        </div>
+        <div class="row d-flex align-content-center align-items-center mt-4">
+            <div class="col-3">
+                <ul class="nav flex-column lighten-3 py-4 mb-r z-depth-1">
+                    <li class="nav-item nav-group-left">
+                        <a class="nav-link active" href="{{ path('groups.index') }}"><i class="fas fa-user-friends"></i> Mon groupe</a>
+                    </li>
+                    <li class="nav-item nav-group-left">
+                        <a class="nav-link" href="{{ path('groups.stats') }}"><i class="fas fa-chart-line"></i> Classement</a>
+                    </li>
+                    <li class="nav-item nav-group-left">
+                        <a class="nav-link" href="{{ path('groups.history') }}"><i class="fas fa-clock"></i> Historique</a>
+                    </li>
+                    <li class="nav-item nav-group-left">
+                        <a class="nav-link" href="{{ path('groups.settings') }}"><i class="fas fa-cogs"></i> Paramètres</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 text-center">
+                <style type="text/css">
+
+                    .ptable table{
+                        margin: 30px auto;
+                        border-collapse: collapse;
+                    }
+
+                    .ptable{
+                        margin: 0px 0% 30px 0%;
+                    }
+
+                    th, td {
+                        padding: 10px;
+                    }
+
+                    th{
+                        background-color: black;
+                        color: #828882;
+                    }
+
+                    .headin{
+                        text-align: center;
+                        text-decoration: none;
+                        color: darkslategrey;
+                        margin: 30px;
+                        display: block;
+                    }
+
+                    .wpos{
+                        text-align: center;
+                    }
+
+                    .wpos td{
+                        color: #2aa735;
+                    }
+
+                    .pos{
+                        text-align: center;
+                    }
+
+                    .pos td{
+                        color: #4e555b;
+                    }
+
+                    table .col{
+                        border-bottom: 1px solid #FFFFFF;
+                    }
+
+                    .wpos:hover{
+                        background-color: #199d2c;
+                    }
+
+                    .wpos:hover td{
+                        color: #000000;
+                    }
+
+                    .pos:hover{
+                        background-color: #ff7b21;
+                    }
+
+                    .pos:hover td{
+                        color: #000000;
+                    }
+
+                </style>
+                <div class="ptable">
+                    <h1 class="headin">Classement</h1>
+                    <table>
+                        <tr class="col text-center">
+                            <th>#</th>
+                            <th>Joueur</th>
+                            <th>Matchs joués</th>
+                            <th>Gagnés</th>
+                            <th>Perdus</th>
+                            <th>Exacts</th>
+                            <th>PTS</th>
+                        </tr>
+                        <tr class="wpos">
+                            <td>1</td>
+                            <td>Adrien le bg</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>6</td>
+                        </tr>
+                        <tr class="wpos">
+                            <td>2</td>
+                            <td>Jojo le rigolo</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>6</td>
+                        </tr>
+                        <tr class="wpos">
+                            <td>3</td>
+                            <td>Fiffou le RL player</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>4</td>
+                        </tr>
+                        <tr class="wpos">
+                            <td>4</td>
+                            <td>Un mec random</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>4</td>
+                        </tr>
+                        <tr class="pos">
+                            <td>5</td>
+                            <td>Le cheval</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>3</td>
+                        </tr>
+                        <tr class="pos">
+                            <td>6</td>
+                            <td>C'est trop génial</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                        <tr class="pos">
+                            <td>7</td>
+                            <td>RC Lens</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>3</td>
+                        </tr>
+                        <tr class="pos">
+                            <td>8</td>
+                            <td>Coralie</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                        <tr class="pos">
+                            <td>9</td>
+                            <td>Une autre Coralie</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr class="pos">
+                            <td>10</td>
+                            <td>Moi</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>0</td>
+                        </tr>
+                        <tr class="pos">
+                            <td>11</td>
+                            <td>Justin dernier comme d'hab</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>0</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

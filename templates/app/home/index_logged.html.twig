@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}FriendsBets - Pariez sur vos matchs préférés entre amis !{% endblock %}
+{% block title %}FriendsBet - Pariez sur vos matchs préférés entre amis !{% endblock %}
 
 {% trans_default_domain 'messages' %}
 
@@ -10,8 +10,62 @@
 
 {% block body %}
     {{ include('app/home/navbar.html.twig') }}
-    <div class="container flex-container">
+        <header class="container-colored text-black text-center">
+            <h1 class="font-weight-bold pt-4 mb-4">Commencez à parier avec vos amis dès maintenant</h1>
 
+            <h2 class="font-weight-bold font-italic mb-5">CREEZ votre groupe, INVITEZ vos amis/collègues, et que le meilleur GAGNE !</h2>
+            <section class="px-md-5 mx-md-5 dark-grey-text text-center">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-2 col-6 mb-4">
+                            <i class="fas fa-volleyball-ball fa-3x "></i>
+                        </div>
+                        <div class="col-md-2 col-6 mb-4">
+                            <i class="fas fa-basketball-ball fa-3x"></i>
+                        </div>
+                        <div class="col-md-2 col-6 mb-4">
+                            <i class="fas fa-table-tennis fa-3x"></i>
+                        </div>
+                        <div class="col-md-2 col-6 mb-4">
+                            <i class="far fa-futbol fa-3x"></i>
+                        </div>
+                        <div class="col-md-2 col-6 mb-4">
+                            <i class="fas fa-quidditch fa-3x"></i>
+                        </div>
+                        <div class="col-md-2 col-6 mb-4">
+                            <i class="fas fa-golf-ball fa-3x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <p> Ceci est un test</p>
+            </section>
+        </header>
+    <div class="container my-5 z-depth-1">
+        <section class="dark-grey-text">
+
+            <div class="row pr-lg-5">
+                <div class="col-md-7 mb-4">
+
+                    <div class="view">
+                        <img src="{{ asset('images/footballer.png') }}" alt="football">
+                    </div>
+
+                </div>
+                <div class="col-md-5 d-flex align-items-center">
+                    <div>
+
+                        <h3 class="font-weight-bold mb-4">Test</h3>
+
+                        <p>Cliquez ci-dessous pour créer un groupe et commencer à parier !</p>
+
+                        <button type="button" class="btn btn-rounded mx-0">Creer un groupe</button>
+
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
     {{ include('app/home/footer.html.twig') }}
 {% endblock %}
