@@ -9,23 +9,7 @@
             <h1 class="text-center group_name">{{ group.name ?? null }}</h1>
         </div>
         <div class="row d-flex align-content-center align-items-center mt-4">
-            <div class="col-3">
-                <ul class="nav flex-column lighten-3 py-4 mb-r z-depth-1">
-                    <li class="nav-item nav-group-left">
-                        <a class="nav-link active" href="{{ path('groups.index') }}"><i class="fas fa-user-friends"></i> Mon groupe</a>
-                    </li>
-                    <li class="nav-item nav-group-left">
-                        <a class="nav-link" href="{{ path('groups.stats') }}"><i class="fas fa-chart-line"></i> Classement</a>
-                    </li>
-                    <li class="nav-item nav-group-left">
-                        <a class="nav-link" href="{{ path('groups.history') }}"><i class="fas fa-clock"></i> Historique</a>
-                    </li>
-                    <li class="nav-item nav-group-left">
-                        <a class="nav-link" href="{{ path('groups.settings') }}"><i class="fas fa-cogs"></i> Paramètres</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-6 text-center">
+            <div class="text-center">
                 {% if form is defined and form is not null %}
                     {{ form_start(form) }}
                     {{ form_widget(form) }}

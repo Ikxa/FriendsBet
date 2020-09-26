@@ -8,6 +8,7 @@ Encore
     .addStyleEntry('footer', './assets/scss/modules/footer.scss')
     .addEntry('app', './assets/js/app.js')
     .addEntry('darkbutton', './assets/js/darkbutton.js')
+    .addEntry('nav', './assets/js/nav.js')
     .autoProvidejQuery({
         $: 'jquery',
         jQuery: 'jquery',
